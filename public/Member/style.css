@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+body {
+    height: 2000px;
+}
+/* Navbar */
+.logo {
+    font-weight: bold;
+    font-size: 2rem;
+}
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    transition: 0.3s;
+    z-index: 9999;
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    padding: 30px 0px;
+}
+li {
+    list-style-type: none;
+}
+li a {
+    color: white;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    text-decoration: none;
+}
+.navbar_cari {
+    padding-left: 20px;
+    width: 20%;
+    height: 40px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2); /* Warna latar belakang semi-transparan */
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    color: white;
+    letter-spacing: 2px;
+}
+.navbar_cari::placeholder {
+    color: white;
+}
+.navbar_cari:focus {
+    outline: none;
+}
+.btn {
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: 1px solid;
+    margin: 5px;
+    text-decoration: none;
+    color: white;
+}
+.register {
+    background-color: white;
+    color: black;
+    transition: 0.2s;
+    border: 1px solid white;
+}
+.register:hover {
+    background-color: transparent;
+    border: 1px solid;
+    color: white;
+}
+.login {
+    transition: 0.2s;
+    border: none;
+}
+.login:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Hero */
+#hero {
+    margin-top: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 90vh;
+}
+.hero_section {
+    width: 99%;
+    border-radius: 20px;
+    background-image: url('/storage/image/umbanner.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: end;
+}
+.isi-hero {
+    padding: 20px;
+    width: 100%;
+    color: white;
+}
+.isi-hero h1 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 2.7rem;
+}
+.filter{
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.ff {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+}
+.f {
+    width: 100%;
+}
+.f label {
+    font-weight: 400;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+.f input {
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(184, 179, 179, 0.473);
+    padding: 0px 10px;
+}
+
+.f input::placeholder {
+    color: white;
+     font-weight: bold;
+}
+.filter button {
+   border: none;
+   background-color: rgb(34, 6, 6);
+   color: white;
+   padding: 13px 30px;
+   border-radius: 30px;
+}
+.f {
+    display: flex;
+    flex-direction: column;
+}
+.filter-kategori {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.filter-kategori p {
+   letter-spacing: 1px;
+}
+.filter-terapkan {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.kategori {
+    border: 1px solid rgba(255, 255, 255, 0.527);
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.kategori:hover {
+    background-color: rgb(34, 6, 6);
+    border: 0.4px solid rgb(34, 6, 6);
+    color: white;
+}
+
+
+
+
+/* Beranda */
+.beranda {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 99.9%;
+    margin-top: 30px;
+}
+.kata {
+    padding: 30px 100px;
+    align-self: flex-start;
+}
+.kata span {
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 2rem;
+}
+.kata p {
+    margin-top: 10px;
+   font-weight: 300;
+}
+/* Card */
+.grid {
+    width: 90%;
+    height: 80%;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(6, 1fr);
+}
+.card {
+    width: 20%;
+    min-width: 250px;
+    padding: 10px 12px;
+    border: 1px solid #cce7d0;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+    margin: 15px 0;
+    transition: 0.2s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+}
+
+.banner {
+    width: 100%;
+    object-fit: cover;
+    height: 150px;
+    border-radius: 20px;
+}
+
+.deskripsi {
+    padding: 5px 0;
+}
+
+.deskripsi span {
+    background-color: rgb(220, 227, 245);
+    border-radius: 4px;
+    padding: 0px 5px;
+    color: #606063;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.deskripsi h5 {
+    padding-top: 7px;
+    color: #1a1a1a;
+    font-size: 14px;
+}
+
+.deskripsi p {
+    padding-top: 7px;
+    font-size: 1-px;
+    font-weight: 400;
+    color: #088178;
+    margin-left: 20px;
+}
+.card a {
+   align-self: flex-end;
+   text-decoration: none;
+   margin: 10px;
+}
+.judul  {
+    margin: 10px;
+    display: flex;
+   align-items: center;
+   gap: 20px;
+}
+.judul img {
+    width: 40px;
+}
+
+
+  @media (max-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
