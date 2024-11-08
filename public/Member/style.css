@@ -216,8 +216,9 @@ li a {
     width: 90%;
     height: 80%;
     display: grid;
+    justify-items: center;
     gap: 5px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 .card {
     width: 20%;
@@ -337,6 +338,12 @@ li a {
     border-radius: 5px;
     padding: 10px 20px;
 }
+.logout {
+    background-color: rgba(255, 0, 0, 0.589);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
 .bawah {
     padding: 20px;
     height: 60vh;
@@ -357,3 +364,11 @@ li a {
 .pe {
     color: rgba(128, 128, 128, 0.836);
 }
+.image_profile{
+    box-shadow: 1px 1px 5px 1px rgba(136, 133, 133, 0.733);
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+

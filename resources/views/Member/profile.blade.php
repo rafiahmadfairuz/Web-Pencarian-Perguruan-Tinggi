@@ -14,6 +14,11 @@
                 <div class="kanan">
                     <p class="kan">+62 9548 4328 234</p>
                     <p class="kan">rafiahmad@gmail.com</p>
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                       <button type="submit" class="kan logout">Logout</button>
+                    </form>
                 </div>
             </div>
 

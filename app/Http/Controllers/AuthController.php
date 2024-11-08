@@ -16,7 +16,7 @@ class AuthController extends Controller
     {
         return view('Auth.register');
     }
-    
+
     public function storeLogin(Request $request)
     {
         $validate = $request->validate([
@@ -27,14 +27,15 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect()->route('home')->with('sukses', 'Berhasil Login');
         }
+        return redirect()->back()->with('gagal', 'Email / Password Salah');
     }
 
     public function storeRegister(Request $request)
     {
         $validate = $request->validate([
             'nama' => 'required|min:4',
-            'email' => 'email|required',
-            'password' => 'required',
+            'email' => 'email|required|unique:users,email',
+            'password' => 'required|min:4',
             'telepon' => 'required',
             'ttl' => 'required',
         ]);
