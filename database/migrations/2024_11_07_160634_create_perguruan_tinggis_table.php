@@ -17,9 +17,10 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->string('telp');
             $table->string('email')->unique();
-            $table->string('web')->unique();
+            $table->string('web');
             $table->string('alamat');
             $table->enum('akreditasi', ['A','B', 'C'])->default('C');
+            $table->string('kategori');
             $table->integer('biaya');
             $table->date('waktu_pendaftaran');
             $table->string('foto');

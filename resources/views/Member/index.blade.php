@@ -10,164 +10,27 @@
     </div>
 
         <div class="grid">
+            @forelse ($pt as $p)
             <div class="card">
-                <img src="{{ url('storage/image/maha.jpg') }}" class="banner" alt="">
+                <img src="{{ url('storage/image/' . $p->banner) }}" class="banner" alt="">
                 <div class="deskripsi">
-                    <span>Swasta</span>
+                    <span>{{ $p->kategori }}</span>
                     <div class="judul">
-                        <img src="{{ url('storage/image/ub.png') }}" alt="">
-                        <h5>Universitas Brawijaya</h5>
+                        <img src="{{ url('storage/image/' . $p->foto) }}" alt="">
+                        <h5>{{ $p->nama }}</h5>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus aspernatur? Distinctio a laboriosam voluptatem labore consequuntur.</p>
+                    <p>{{ Str::limit($p->deskripsi, 100, '...') }}</p>
                 </div>
-                <a href="#">Selengkapnya ></i></a>
+                <a href="{{ route('detail.pt',$p->id) }}">Selengkapnya ></i></a>
             </div>
-            <div class="card">
-                <img src="{{ url('storage/image/maha.jpg') }}" class="banner" alt="">
-                <div class="deskripsi">
-                    <span>Swasta</span>
-                    <div class="judul">
-                        <img src="{{ url('storage/image/ub.png') }}" alt="">
-                        <h5>Universitas Brawijaya</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus aspernatur? Distinctio a laboriosam voluptatem labore consequuntur.</p>
-                </div>
-                <a href="#">Selengkapnya ></i></a>
-            </div>
-            <div class="card">
-                <img src="{{ url('storage/image/maha.jpg') }}" class="banner" alt="">
-                <div class="deskripsi">
-                    <span>Swasta</span>
-                    <div class="judul">
-                        <img src="{{ url('storage/image/ub.png') }}" alt="">
-                        <h5>Universitas Brawijaya</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus aspernatur? Distinctio a laboriosam voluptatem labore consequuntur.</p>
-                </div>
-                <a href="#">Selengkapnya ></i></a>
-            </div>
-            <div class="card">
-                <img src="{{ url('storage/image/maha.jpg') }}" class="banner" alt="">
-                <div class="deskripsi">
-                    <span>Swasta</span>
-                    <div class="judul">
-                        <img src="{{ url('storage/image/ub.png') }}" alt="">
-                        <h5>Universitas Brawijaya</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus aspernatur? Distinctio a laboriosam voluptatem labore consequuntur.</p>
-                </div>
-                <a href="#">Selengkapnya ></i></a>
-            </div>
-            <div class="card">
-                <img src="{{ url('storage/image/maha.jpg') }}" class="banner" alt="">
-                <div class="deskripsi">
-                    <span>Swasta</span>
-                    <div class="judul">
-                        <img src="{{ url('storage/image/ub.png') }}" alt="">
-                        <h5>Universitas Brawijaya</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus aspernatur? Distinctio a laboriosam voluptatem labore consequuntur.</p>
-                </div>
-                <a href="#">Selengkapnya ></i></a>
-            </div>
-            <div class="card">
-                <img src="{{ url('storage/image/maha.jpg') }}" class="banner" alt="">
-                <div class="deskripsi">
-                    <span>Swasta</span>
-                    <div class="judul">
-                        <img src="{{ url('storage/image/ub.png') }}" alt="">
-                        <h5>Universitas Brawijaya</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus aspernatur? Distinctio a laboriosam voluptatem labore consequuntur.</p>
-                </div>
-                <a href="#">Selengkapnya ></i></a>
-            </div>
-            <div class="card">
-                <img src="{{ url('storage/image/maha.jpg') }}" class="banner" alt="">
-                <div class="deskripsi">
-                    <span>Swasta</span>
-                    <div class="judul">
-                        <img src="{{ url('storage/image/ub.png') }}" alt="">
-                        <h5>Universitas Brawijaya</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus aspernatur? Distinctio a laboriosam voluptatem labore consequuntur.</p>
-                </div>
-                <a href="#">Selengkapnya ></i></a>
-            </div>
-            <div class="card">
-                <img src="{{ url('storage/image/maha.jpg') }}" class="banner" alt="">
-                <div class="deskripsi">
-                    <span>Swasta</span>
-                    <div class="judul">
-                        <img src="{{ url('storage/image/ub.png') }}" alt="">
-                        <h5>Universitas Brawijaya</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus aspernatur? Distinctio a laboriosam voluptatem labore consequuntur.</p>
-                </div>
-                <a href="#">Selengkapnya ></i></a>
-            </div>
-            <div class="card">
-                <img src="{{ url('storage/image/maha.jpg') }}" class="banner" alt="">
-                <div class="deskripsi">
-                    <span>Swasta</span>
-                    <div class="judul">
-                        <img src="{{ url('storage/image/ub.png') }}" alt="">
-                        <h5>Universitas Brawijaya</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus aspernatur? Distinctio a laboriosam voluptatem labore consequuntur.</p>
-                </div>
-                <a href="#">Selengkapnya ></i></a>
-            </div>
-            <div class="card">
-                <img src="{{ url('storage/image/maha.jpg') }}" class="banner" alt="">
-                <div class="deskripsi">
-                    <span>Swasta</span>
-                    <div class="judul">
-                        <img src="{{ url('storage/image/ub.png') }}" alt="">
-                        <h5>Universitas Brawijaya</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus aspernatur? Distinctio a laboriosam voluptatem labore consequuntur.</p>
-                </div>
-                <a href="#">Selengkapnya ></i></a>
-            </div>
-            <div class="card">
-                <img src="{{ url('storage/image/maha.jpg') }}" class="banner" alt="">
-                <div class="deskripsi">
-                    <span>Swasta</span>
-                    <div class="judul">
-                        <img src="{{ url('storage/image/ub.png') }}" alt="">
-                        <h5>Universitas Brawijaya</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus aspernatur? Distinctio a laboriosam voluptatem labore consequuntur.</p>
-                </div>
-                <a href="#">Selengkapnya ></i></a>
-            </div>
-            <div class="card">
-                <img src="{{ url('storage/image/maha.jpg') }}" class="banner" alt="">
-                <div class="deskripsi">
-                    <span>Swasta</span>
-                    <div class="judul">
-                        <img src="{{ url('storage/image/ub.png') }}" alt="">
-                        <h5>Universitas Brawijaya</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus aspernatur? Distinctio a laboriosam voluptatem labore consequuntur.</p>
-                </div>
-                <a href="#">Selengkapnya ></i></a>
-            </div>
-            <div class="card">
-                <img src="{{ url('storage/image/maha.jpg') }}" class="banner" alt="">
-                <div class="deskripsi">
-                    <span>Swasta</span>
-                    <div class="judul">
-                        <img src="{{ url('storage/image/ub.png') }}" alt="">
-                        <h5>Universitas Brawijaya</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, possimus aspernatur? Distinctio a laboriosam voluptatem labore consequuntur.</p>
-                </div>
-                <a href="#">Selengkapnya ></i></a>
-            </div>
+            @empty
+               <p>Kosong</p>
+            @endforelse
+
+           {{ $pt->links() }}
+
         </div>
-  
+
 
    </div>
 

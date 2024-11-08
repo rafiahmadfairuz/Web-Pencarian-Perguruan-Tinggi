@@ -17,7 +17,17 @@ class PerguruanTinggiFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nama' => $this->faker->sentence(2),
+            'deskripsi' => $this->faker->paragraph(10, false),
+            'telp' => $this->faker->phoneNumber(),
+            'email' => $this->faker->email(),
+            'web' => "www.kampus.com",
+            'alamat' => $this->faker->streetAddress(),
+            'biaya' => $this->faker->randomNumber(7, false),
+            'kategori' => 'Politeknik',
+            'waktu_pendaftaran' => $this->faker->date(),
+            'foto' => 'ub.png',
+            'banner' => 'maha.jpg',
         ];
     }
 }

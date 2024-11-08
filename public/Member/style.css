@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -185,12 +186,9 @@ li a {
     border: 0.4px solid rgb(34, 6, 6);
     color: white;
 }
-
-
-
-
 /* Beranda */
 .beranda {
+    font-family: "Roboto", sans-serif;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -210,13 +208,16 @@ li a {
     margin-top: 10px;
    font-weight: 300;
 }
+.eror {
+    color: red;
+}
 /* Card */
 .grid {
     width: 90%;
     height: 80%;
     display: grid;
     gap: 5px;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 .card {
     width: 20%;
@@ -251,7 +252,7 @@ li a {
 .deskripsi span {
     background-color: rgb(220, 227, 245);
     border-radius: 4px;
-    padding: 0px 5px;
+    padding: 3px 5px;
     color: #606063;
     font-size: 12px;
     margin-left: 10px;
@@ -296,3 +297,63 @@ li a {
       grid-template-columns: 1fr;
     }
   }
+.profile {
+    font-family: "Faculty Glyphic", sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.kiri {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: space-around;
+}
+.detail_profile {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 80%;
+    background-color: white;
+    box-shadow: 2px 3px 10px 1px rgba(110, 109, 109, 0.363);
+    border-radius: 10px;
+}
+.profile_picture {
+    border-radius: 50%;
+    height: 130px;
+    width: 130px;
+    object-fit: cover;
+}
+.kanan {
+    display: flex;
+    gap: 20px;
+}
+.kan {
+    border: 1px solid rgba(184, 181, 181, 0.253);
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+.bawah {
+    padding: 20px;
+    height: 60vh;
+    width: 80%;
+    box-shadow: 2px 3px 10px 1px rgba(110, 109, 109, 0.699);
+    border-radius: 10px;
+    background-color: white;
+}
+.name_role {
+    display: flex;
+    gap: 10px;
+}
+.role {
+    border-radius: 20px;
+    border: 1px solid orange;
+    color: rgb(150, 99, 5);
+}
+.pe {
+    color: rgba(128, 128, 128, 0.836);
+}

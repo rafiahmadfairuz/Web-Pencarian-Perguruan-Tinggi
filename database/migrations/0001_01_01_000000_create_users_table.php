@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->enum('roles', ['admin','member'])->default('member');
             $table->boolean('status')->default(0);
+            $table->string('telepon');
+            $table->date('ttl');
             $table->rememberToken();
             $table->timestamps();
         });

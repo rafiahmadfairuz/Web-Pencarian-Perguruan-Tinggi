@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Jurusan;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class JurusanSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class JurusanSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+       Jurusan::factory(20)->create();
     }
 }
