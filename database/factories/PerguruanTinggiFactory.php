@@ -19,6 +19,7 @@ class PerguruanTinggiFactory extends Factory
         return [
             'nama' => $this->faker->sentence(2),
             'deskripsi' => $this->faker->paragraph(10, false),
+            'slogan' => "Membangun Masa Depan Anda",
             'telp' => $this->faker->phoneNumber(),
             'email' => $this->faker->email(),
             'web' => "www.kampus.com",

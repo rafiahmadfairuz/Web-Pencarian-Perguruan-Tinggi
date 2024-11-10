@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class PerguruanTinggi extends Model
 {
@@ -22,5 +23,9 @@ class PerguruanTinggi extends Model
     public function jurusan(): BelongsToMany
     {
         return $this->belongsToMany(Jurusan::class, 'perguruan_tinggi_fakultas_jurusan');
+    }
+    public function admin(): HasOne
+    {
+        return $this->hasOne(Admin::class);
     }
 }

@@ -14,17 +14,19 @@ return new class extends Migration
         Schema::create('perguruan_tinggis', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->text('deskripsi');
             $table->string('telp');
             $table->string('email')->unique();
             $table->string('web');
             $table->string('alamat');
             $table->enum('akreditasi', ['A','B', 'C'])->default('C');
             $table->string('kategori');
+            $table->text('slogan');
+            $table->text('deskripsi');
             $table->integer('biaya');
             $table->date('waktu_pendaftaran');
             $table->string('foto');
             $table->text('banner');
+            $table->unsignedBigInteger('admin_id')->nullable();
             $table->timestamps();
         });
     }

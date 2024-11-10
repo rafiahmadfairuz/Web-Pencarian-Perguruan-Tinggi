@@ -1,10 +1,16 @@
 window.addEventListener('scroll', function() {
     let header = document.querySelector('header');
-    if (window.scrollY > 10) {
-        header.style.backgroundColor = "#4b5563";
+    let logo = document.querySelector('.logo');
+    if (window.scrollY > 300) {
+        header.style.backgroundColor = "white";
+        header.classList.add('shadow-lg');
+        logo.style.color = "black"
+
 
     } else {
         header.style.backgroundColor = "";
-        header.style.backdropFilter = "";
+        header.classList.remove('shadow-lg');
+        logo.style.color = "white"
+
     }
 });

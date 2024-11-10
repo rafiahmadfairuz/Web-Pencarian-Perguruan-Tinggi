@@ -9,9 +9,9 @@
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas consectetur voluptatum natus eaque debitis porro.</p>
     </div>
 
-        <div class="grid">
+        <div class="penataan">
             @forelse ($pt as $p)
-            <div class="card">
+            <div class="kartu">
                 <img src="{{ url('storage/image/' . $p->banner) }}" class="banner" alt="">
                 <div class="deskripsi">
                     <span>{{ $p->kategori }}</span>
@@ -19,7 +19,7 @@
                         <img src="{{ url('storage/image/' . $p->foto) }}" alt="">
                         <h5>{{ $p->nama }}</h5>
                     </div>
-                    <p>{{ Str::limit($p->deskripsi, 100, '...') }}</p>
+                    <p>{{ Str::limit($p->deskripsi, 150, '...') }}</p>
                 </div>
                 <a href="{{ route('detail.pt',$p->id) }}">Selengkapnya ></i></a>
             </div>

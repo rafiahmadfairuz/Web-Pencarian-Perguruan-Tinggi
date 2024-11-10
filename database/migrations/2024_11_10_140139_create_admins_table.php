@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('perguruan_tinggi_user', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->foreignId('perguruan_tinggi_id')->constrained();
-            $table->foreignId('fakultas_id')->constrained();
-            $table->foreignId('jurusan_id')->constrained();
-            $table->text('alamat');
-            $table->text('nilai_akhir');
-            $table->enum('status', ['Pending', 0, 1])->default('Pending');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('perguruan_tinggi_user');
+        Schema::dropIfExists('admins');
     }
 };

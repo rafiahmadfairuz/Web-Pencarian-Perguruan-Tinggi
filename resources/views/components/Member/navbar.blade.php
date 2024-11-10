@@ -1,18 +1,10 @@
-<header class="header">
+<header class="header ">
     <nav>
         <div class="logo">KampusMalang.</div>
-        <ul>
-            <li>
-                <a href="">Sekolah</a>
-                <a href="">Sekolah</a>
-                <a href="">Sekolah</a>
-                <a href="">Sekolah</a>
-            </li>
-        </ul>
-        <input type="text" placeholder="Cari Perguruan Tinggi..." name="cari" class="navbar_cari">
+        <input type="text" placeholder="Cari Perguruan Tinggi..." name="cari" class="n backdrop-blur-md bg-white/50 rounded-md w-1/2">
         <div class="auth">
             @auth
-            <a href="{{route('profile')}}"><img src="{{url('storage/image/kosong.jpg')}}" class="image_profile" alt=""></a>
+            <a href="{{route('profile')}}"><img src="{{url('storage/image/images.jfif')}}" class="image_profile" alt=""></a>
             @endauth
             @guest
             <a href="{{route('login')}}" class="btn login">Login</a>

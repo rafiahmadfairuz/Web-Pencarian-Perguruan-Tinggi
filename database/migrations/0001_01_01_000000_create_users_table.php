@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('roles', ['admin','member'])->default('member');
+            $table->string('roles', ['member','pengelola'])->default('member');
             $table->boolean('status')->default(0);
             $table->string('telepon');
             $table->date('ttl');
