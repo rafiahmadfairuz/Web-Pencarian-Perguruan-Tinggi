@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Route;
@@ -8,8 +9,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('admin')->group(function () {
+    Route::get('index', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('view/member', [AdminController::class, 'viewMember'])->name('view.member');
+    Route::get('view/mahasiswa', [AdminController::class, 'viewMahasiswa'])->name('view.mahasiswa');
+    Route::get('form/perguruan-tinggi', [AdminController::class, 'perguruanTinggi'])->name('view.pt');
+    Route::get('form/fakultas', [AdminController::class, 'fakultas'])->name('view.fakultas');
+    Route::get('form/jurusan', [AdminController::class, 'jurusan'])->name('view.jurusan');
 
-
+    Route::get('member')->name('member.aktif');
+    Route::get('member')->name('member.nonaktif');
+});
 
 Route::middleware('auth')->group(function () {
     Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
@@ -17,9 +27,6 @@ Route::middleware('auth')->group(function () {
     Route::get('home', [MemberController::class, 'index'])->name('home');
     Route::get('profile', [MemberController::class, 'profile'])->name('profile');
     Route::get('form-daftar', [MemberController::class, 'formDaftar'])->name('daftar');
-    Route::get('gok', function () {
-        return view('Admin.index');
-     });
 });
 
 Route::get('login', [AuthController::class, 'login'])->name('login');

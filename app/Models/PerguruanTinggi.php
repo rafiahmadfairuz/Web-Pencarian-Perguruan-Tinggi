@@ -14,7 +14,7 @@ class PerguruanTinggi extends Model
     protected $guarded = ['id'];
     public function user(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'perguruan_tinggi_user');
+        return $this->belongsToMany(User::class, 'perguruan_tinggi_user', 'perguruan_tinggi_id', 'user_id');
     }
     public function fakultas(): BelongsToMany
     {

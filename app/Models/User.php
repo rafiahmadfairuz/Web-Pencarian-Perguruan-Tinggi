@@ -49,6 +49,6 @@ class User extends Authenticatable
     }
     public function perguruanTinggi(): BelongsToMany
     {
-        return $this->belongsToMany(PerguruanTinggi::class, 'perguruan_tinggi_user');
+        return $this->belongsToMany(PerguruanTinggi::class, 'perguruan_tinggi_user', 'user_id' , 'perguruan_tinggi_id');
     }
 }

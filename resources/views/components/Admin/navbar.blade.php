@@ -7,7 +7,7 @@
                 <span class="font-extralight">kampus</span><span class="text-blue-500">Malang.</span>
             </h1>
             <li>
-                <x-Admin.link href="">
+                <x-Admin.link href="{{ route('admin.index') }}">
                     <i class="fas fa-tachometer-alt"></i><span class="ms-3">Dashboard</span>
                 </x-Admin.link>
             </li>
@@ -27,12 +27,12 @@
                 </x-Admin.link>
             </li>
             <li>
-                <x-Admin.link href="">
+                <x-Admin.link href="{{ route('view.member') }}">
                     <i class="fas fa-users"></i><span class="ms-3">Member</span>
                 </x-Admin.link>
             </li>
             <li>
-                <x-Admin.link href="">
+                <x-Admin.link href="{{ route('view.mahasiswa') }}">
                     <i class="fas fa-user-graduate"></i><span class="ms-3">Mahasiswa Baru</span>
                 </x-Admin.link>
             </li>
