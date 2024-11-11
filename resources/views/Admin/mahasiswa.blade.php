@@ -1,5 +1,5 @@
 <x-Admin.app>
-    @section('title', 'Contact | Customer')
+    @section('title', 'List Mahasiswa Baru')
     <section class="py-4">
       <x-Admin.navbar></x-Admin.navbar>
         @include('Admin.layout.successModal')

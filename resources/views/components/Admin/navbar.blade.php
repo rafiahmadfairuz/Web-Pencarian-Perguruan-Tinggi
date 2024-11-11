@@ -12,7 +12,7 @@
                 </x-Admin.link>
             </li>
             <li>
-                <x-Admin.link href="">
+                <x-Admin.link href="{{ route('view.pt') }}">
                     <i class="fas fa-university"></i><span class="ms-3">Perguruan Tinggi</span>
                 </x-Admin.link>
             </li>

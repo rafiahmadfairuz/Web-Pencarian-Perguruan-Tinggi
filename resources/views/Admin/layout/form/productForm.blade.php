@@ -1,4 +1,4 @@
-<form enctype="multipart/form-data" action="{{ route('Product.store') }}" method="POST">
+<form enctype="multipart/form-data" action="" method="POST">
     @csrf
     @method('post')
     <div class="flex flex-wrap">
@@ -36,9 +36,9 @@
             <select id="brand_id" name="brand_id"
                 class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <option value="" selected>Select</option>
-                @foreach ($brands as $brand)
+                {{-- @foreach ($brands as $brand)
                     <option value="{{ $brand->id }}">{{ $brand->title }}</option>
-                @endforeach
+                @endforeach --}}
             </select>
             @error('brand_id')
                 @include('layout.form.errorMessage')
@@ -51,9 +51,9 @@
             <select id="category_id" name="category_id"
                 class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <option value="" selected>Select</option>
-                @foreach ($categories as $category)
+                {{-- @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->title }}</option>
-                @endforeach
+                @endforeach --}}
             </select>
             @error('category_id')
                 @include('layout.form.errorMessage')
@@ -66,9 +66,9 @@
             <select id="group_id" name="group_id"
                 class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <option value="" selected>Select</option>
-                @foreach ($groups as $group)
+                {{-- @foreach ($groups as $group)
                     <option value="{{ $group->id }}">{{ $group->title }}</option>
-                @endforeach
+                @endforeach --}}
             </select>
             @error('group_id')
                 @include('layout.form.errorMessage')
@@ -81,9 +81,9 @@
             <select id="unit_id" name="unit_id"
                 class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <option value="" selected>Select</option>
-                @foreach ($units as $unit)
+                {{-- @foreach ($units as $unit)
                     <option value="{{ $unit->id }}">{{ $unit->title }}</option>
-                @endforeach
+                @endforeach --}}
             </select>
             @error('unit_id')
                 @include('layout.form.errorMessage')

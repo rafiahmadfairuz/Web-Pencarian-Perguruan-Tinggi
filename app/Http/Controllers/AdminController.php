@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PerguruanTinggi;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,17 @@ class AdminController extends Controller
     }
     public function perguruanTinggi()
     {
-        return view('Admin.perguruanTinggi');
+        $perguruanTinggi = PerguruanTinggi::all();
+        return view('Admin.PerguruanTinggi.index', compact('perguruanTinggi'));
+    }
+    public function formUpdatePerguruanTinggi($id)
+    {
+        $perguruanTinggiTerpilih = PerguruanTinggi::findOrFail($id);
+        return view('Admin.PerguruanTinggi.edit', compact('perguruanTinggiTerpilih'));
+    }
+    public function formPerguruanTinggi()
+    {
+        return view('Admin.PerguruanTinggi.create');
     }
     public function fakultas()
     {

@@ -13,7 +13,9 @@ Route::prefix('admin')->group(function () {
     Route::get('index', [AdminController::class, 'index'])->name('admin.index');
     Route::get('view/member', [AdminController::class, 'viewMember'])->name('view.member');
     Route::get('view/mahasiswa', [AdminController::class, 'viewMahasiswa'])->name('view.mahasiswa');
-    Route::get('form/perguruan-tinggi', [AdminController::class, 'perguruanTinggi'])->name('view.pt');
+    Route::get('view/perguruan-tinggi', [AdminController::class, 'perguruanTinggi'])->name('view.pt');
+    Route::get('form/perguruan-tinggi', [AdminController::class, 'formPerguruanTinggi'])->name('create.pt');
+    Route::get('form/update/perguruan-tinggi/{id}', [AdminController::class, 'formUpdatePerguruanTinggi'])->name('update.pt');
     Route::get('form/fakultas', [AdminController::class, 'fakultas'])->name('view.fakultas');
     Route::get('form/jurusan', [AdminController::class, 'jurusan'])->name('view.jurusan');
 

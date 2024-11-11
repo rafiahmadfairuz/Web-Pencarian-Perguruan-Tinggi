@@ -1,10 +1,10 @@
-<form enctype="multipart/form-data" action="{{ route('Product.update', $product->id) }}" method="POST">
+<form enctype="multipart/form-data" action="" method="POST">
     @csrf
     @method('put')
     <div class="flex flex-wrap">
         <div class="w-1/4 mb-4 mr-8">
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Product</label>
-            <input value="{{ $product->name }}" type="text" name="name" id="name"
+            <input value="{{ $perguruanTinggiTerpilih->nama }}" type="text" name="name" id="name"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
             @error('name')
                 @include('layout.form.errorMessage')
@@ -12,7 +12,7 @@
         </div>
         <div class="w-1/4 mb-4 mr-8">
             <label for="sku" class="block mb-2 text-sm font-medium text-gray-900">SKU</label>
-            <input value="{{ $product->sku }}" type="text" name="sku" id="sku"
+            <input value="{{ $perguruanTinggiTerpilih->kategori }}" type="text" name="sku" id="sku"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                 placeholder="Product SKU">
             @error('sku')
@@ -21,7 +21,7 @@
         </div>
         <div class="w-1/4 mb-4 mr-8">
             <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Description</label>
-            <input value="{{ $product->description }}" type="text" name="description" id="description"
+            <input value="{{ $perguruanTinggiTerpilih->akreditasi }}" type="text" name="description" id="description"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                 placeholder="Product Description">
             @error('description')
@@ -35,9 +35,9 @@
             <select id="brand_id" name="brand_id"
                 class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <option value="" selected>Select</option>
-                @foreach ($brands as $brand)
+                {{-- @foreach ($brands as $brand)
                     <option value="{{ $brand->id }}">{{ $brand->title }}</option>
-                @endforeach
+                @endforeach --}}
             </select>
             @error('brand_id')
                 @include('layout.form.errorMessage')
@@ -50,9 +50,9 @@
             <select id="category_id" name="category_id"
                 class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <option value="" selected>Select</option>
-                @foreach ($categories as $category)
+                {{-- @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->title }}</option>
-                @endforeach
+                @endforeach --}}
             </select>
             @error('category_id')
                 @include('layout.form.errorMessage')
@@ -65,9 +65,9 @@
             <select id="group_id" name="group_id"
                 class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <option value="" selected>Select</option>
-                @foreach ($groups as $group)
+                {{-- @foreach ($groups as $group)
                     <option value="{{ $group->id }}">{{ $group->title }}</option>
-                @endforeach
+                @endforeach --}}
             </select>
             @error('group_id')
                 @include('layout.form.errorMessage')
@@ -80,9 +80,9 @@
             <select id="unit_id" name="unit_id"
                 class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <option value="" selected>Select</option>
-                @foreach ($units as $unit)
+                {{-- @foreach ($units as $unit)
                     <option value="{{ $unit->id }}">{{ $unit->title }}</option>
-                @endforeach
+                @endforeach --}}
             </select>
             @error('unit_id')
                 @include('layout.form.errorMessage')
@@ -104,7 +104,7 @@
         </div>
         <div class="w-1/4 mb-4 mr-8">
             <label for="initial_quantity" class="block mb-2 text-sm font-medium text-gray-900">Initial Quantity</label>
-            <input value="{{ $product->initial_quantity }}" type="number" name="initial_quantity" id="initial_quantity"
+            <input value="{{ $perguruanTinggiTerpilih->id }}" type="number" name="initial_quantity" id="initial_quantity"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
             @error('initial_quantity')
                 @include('layout.form.errorMessage')
@@ -112,7 +112,7 @@
         </div>
         <div class="w-1/4 mb-4 mr-8">
             <label for="sell_price" class="block mb-2 text-sm font-medium text-gray-900">Selling Price</label>
-            <input value="{{ $product->sell_price }}" type="number" name="sell_price" id="sell_price"
+            <input value="{{ $perguruanTinggiTerpilih->id }}" type="number" name="sell_price" id="sell_price"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
             @error('sell_price')
                 @include('layout.form.errorMessage')
@@ -120,7 +120,7 @@
         </div>
         <div class="w-1/4 mb-4 mr-8">
             <label for="purchase_price" class="block mb-2 text-sm font-medium text-gray-900">Purchase Price</label>
-            <input value="{{ $product->purchase_price }}" type="number" name="purchase_price" id="purchase_price"
+            <input value="{{ $perguruanTinggiTerpilih->id }}" type="number" name="purchase_price" id="purchase_price"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
             @error('purchase_price')
                 @include('layout.form.errorMessage')
@@ -128,7 +128,7 @@
         </div>
         <div class="w-1/4 mb-4 mr-8">
             <label for="vat" class="block mb-2 text-sm font-medium text-gray-900">VAT</label>
-            <input value="{{ $product->vat }}" type="number" name="vat" id="vat"
+            <input value="{{ $perguruanTinggiTerpilih->id }}" type="number" name="vat" id="vat"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
             @error('vat')
                 @include('layout.form.errorMessage')
@@ -136,7 +136,7 @@
         </div>
         <div class="w-1/4 mb-4 mr-8">
             <label for="barcode" class="block mb-2 text-sm font-medium text-gray-900">Barcode</label>
-            <input value="{{ $product->barcode }}" type="number" name="barcode" id="barcode"
+            <input value="{{ $perguruanTinggiTerpilih->id }}" type="number" name="barcode" id="barcode"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
             @error('barcode')
                 @include('layout.form.errorMessage')

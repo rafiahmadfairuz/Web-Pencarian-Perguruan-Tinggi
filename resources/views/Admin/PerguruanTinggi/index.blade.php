@@ -1,19 +1,16 @@
-<x-app>
-    @section('title', 'All Products')
+<x-Admin.app>
+    @section('title', 'Daftar Universitas')
     <section class="py-4">
-        <x-nav></x-nav>
-        <!-- container -->
-        <!-- Modal -->
-        @include('layout.successModal')
-        <!-- FORM -->
-        <div class="p-4 sm:ml-64 mt-1">
-            <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
-                <h2 class="mb-4 text-xl font-bold text-gray-900">Tambah Perguruan Tinggi</h2>
-                @include('layout.form.productForm')
-            </div>
-        </div>
+        <x-Admin.navbar></x-Admin.navbar>
         <!-- TABLE -->
         <div class="p-4 sm:ml-64">
+            <a href="{{ route('create.pt') }}">
+                <button class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+                    <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                    Create Universitas
+                    </span>
+                </button>
+            </a>
             <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
                 <h2 class="mb-4 text-xl font-bold text-gray-900">List Perguruan Tinggi</h2>
 
@@ -45,35 +42,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($products as $product)
+                            @foreach ($perguruanTinggi as $pt)
                                 <tr>
                                     <td scope="col" class="px-6 py-4">
-                                        {{ $product->sku  }}
+                                        <img src="{{ url('storage/image/' . $pt->foto)  }}" class="h-10 w-10 object-cover" alt="" srcset="">
                                     </td>
                                     <td scope="col" class="px-6 py-4">
-                                        {{ $product->name }}
+                                        {{ $pt->nama }}
                                     </td>
                                     <td scope="col" class="px-6 py-4">
-                                        {{ $product->category->title }}
+                                        {{ $pt->kategori }}
                                     </td>
                                     <td scope="col" class="px-6 py-4">
-                                        {{ $product->group->title }}
+                                        {{ $pt->email }}
+                                    </td>
+                                    <td scope="col" class="px-6 py-4 ">
+                                        {{ $pt->akreditasi }}
                                     </td>
                                     <td scope="col" class="px-6 py-4">
-                                        {{ $product->brand->title }}
+                                        {{ $pt->alamat }}
                                     </td>
-                                    <td scope="col" class="px-6 py-4">
-                                        {{ $product->brand->title }}
-                                    </td> 
                                     <td scope="col" class="px-6 py-3">
-                                        <a href=" {{ route('Product.edit', $product->id) }} " type="button" class=text-sm
+                                        <a href="{{ route('update.pt' , $pt->id) }}" type="button" class="text-sm
                                             font-medium text-red-500">Edit</a> |
-                                        <form action="{{ route('Product.destroy', $product->id) }}" method="POST"
-                                            class="inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-sm font-medium text-red-500">Delete</button>
-                                        </form>
+                                        <a href=" " type="button" class="text-sm
+                                            font-medium text-red-500">Detail</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -83,8 +76,8 @@
             </div>
         </div>
     </section>
-    @include('layout.successModalScript')
-</x-app>
+    @include('Admin.layout.successModalScript')
+</x-Admin.app>
 
 
 
