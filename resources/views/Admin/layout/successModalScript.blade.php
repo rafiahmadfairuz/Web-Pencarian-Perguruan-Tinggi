@@ -1,7 +1,7 @@
 <script>
     // Show modal if success message exists
     document.addEventListener('DOMContentLoaded', function () {
-        const successMessage = "{{ session('success') }}";
+        const successMessage = "{{ session('sukses') }}";
         if (successMessage) {
             const modal = document.getElementById('successModal');
             const messageElement = document.getElementById('successMessage');

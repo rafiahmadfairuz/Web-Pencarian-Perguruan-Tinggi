@@ -2,7 +2,6 @@
     @section('title', 'Daftar Universitas')
     <section class="py-4">
         <x-Admin.navbar></x-Admin.navbar>
-        <!-- TABLE -->
         <div class="p-4 sm:ml-64">
             <a href="{{ route('create.pt') }}">
                 <button class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
@@ -11,7 +10,7 @@
                     </span>
                 </button>
             </a>
-            <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
+            <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg shadow-lg bg-white">
                 <h2 class="mb-4 text-xl font-bold text-gray-900">List Perguruan Tinggi</h2>
 
                 <div class="relative overflow-x-auto">

@@ -8,9 +8,9 @@
         @include('Admin.layout.successModal')
         <!-- FORM -->
         <div class="p-4 sm:ml-64 mt-1">
-            <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
+            <div class="  p-4 border-2 border-gray-200 border-dashed rounded-lg">
                 <h2 class="mb-4 text-xl font-bold text-gray-900">Tambah Perguruan Tinggi</h2>
-                @include('Admin.layout.form.productForm')
+                @include('Admin.layout.form.perguruanTinggi')
             </div>
         </div>
     </section>
