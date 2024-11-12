@@ -17,12 +17,12 @@
                 </x-Admin.link>
             </li>
             <li>
-                <x-Admin.link href="">
+                <x-Admin.link href="{{ route('view.fakultas') }}">
                     <i class="fas fa-building"></i><span class="ms-3">Fakultas</span>
                 </x-Admin.link>
             </li>
             <li>
-                <x-Admin.link href="">
+                <x-Admin.link href="{{ route('view.jurusan') }}">
                     <i class="fas fa-graduation-cap"></i><span class="ms-3">Jurusan</span>
                 </x-Admin.link>
             </li>

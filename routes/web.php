@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FakultasController;
+use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\PerguruanTinggiController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,16 +17,30 @@ Route::prefix('admin')->group(function () {
     Route::get('index', [AdminController::class, 'index'])->name('admin.index');
     Route::get('view/member', [AdminController::class, 'viewMember'])->name('view.member');
     Route::get('view/mahasiswa', [AdminController::class, 'viewMahasiswa'])->name('view.mahasiswa');
-    Route::get('view/perguruan-tinggi', [AdminController::class, 'perguruanTinggi'])->name('view.pt');
 
-    Route::get('form/perguruan-tinggi', [AdminController::class, 'formPerguruanTinggi'])->name('create.pt');
-    Route::post('form/perguruan-tinggi', [AdminController::class, 'storePerguruanTinggi'])->name('store.pt');
-    Route::get('form/update/perguruan-tinggi/{id}', [AdminController::class, 'formUpdatePerguruanTinggi'])->name('update.pt');
-    Route::get('form/fakultas', [AdminController::class, 'fakultas'])->name('view.fakultas');
-    Route::get('form/update/fakultas/{id}', [AdminController::class, 'formUpdatePerguruanTinggi'])->name('update.pt');
-    Route::get('form/jurusan', [AdminController::class, 'jurusan'])->name('view.jurusan');
-    Route::get('form/update/fakultas/{id}', [AdminController::class, 'formUpdatePerguruanTinggi'])->name('update.pt');
+    Route::get('view/perguruan-tinggi', [PerguruanTinggiController::class, 'perguruanTinggi'])->name('view.pt');
+    Route::get('view/perguruan-tinggi/detail/{id}', [PerguruanTinggiController::class, 'detailPerguruanTinggi'])->name('admin.detail.pt');
+    Route::get('form/perguruan-tinggi', [PerguruanTinggiController::class, 'formPerguruanTinggi'])->name('create.pt');
+    Route::post('form/perguruan-tinggi', [PerguruanTinggiController::class, 'storePerguruanTinggi'])->name('store.pt');
+    Route::get('form/update/perguruan-tinggi/{id}', [PerguruanTinggiController::class, 'formUpdatePerguruanTinggi'])->name('update.pt');
+    Route::post('form/update/perguruan-tinggi/{id}', [PerguruanTinggiController::class, 'storeUpdatePerguruanTinggi'])->name('store.update.pt');
+    Route::delete('form/delete/perguruan-tinggi/{id}', [PerguruanTinggiController::class, 'deletePerguruanTinggi'])->name('delete.pt');
 
+    Route::get('fakultas', [FakultasController::class, 'fakultas'])->name('view.fakultas');
+    Route::get('fakultas/detail/{id}', [FakultasController::class, 'detailFakultas'])->name('detail.fakultas');
+    Route::get('form/fakultas', [FakultasController::class, 'formFakultas'])->name('create.fakultas');
+    Route::post('form/fakultas', [FakultasController::class, 'storeFakultas'])->name('store.fakultas');
+    Route::get('form/update/fakultas/{id}', [FakultasController::class, 'formUpdateFakultas'])->name('update.fakultas');
+    Route::post('form/update/fakultas/{id}', [FakultasController::class, 'storeUpdateFakultas'])->name('store.update.fakultas');
+    Route::delete('form/update/fakultas/{id}', [FakultasController::class, 'deleteFakultas'])->name('delete.fakultas');
+
+    Route::get('jurusan', [JurusanController::class, 'jurusan'])->name('view.jurusan');
+    Route::get('jurusan/detail/{id}', [JurusanController::class, 'detailJurusan'])->name('detail.jurusan');
+    Route::get('form/jurusan', [JurusanController::class, 'formJurusan'])->name('create.jurusan');
+    Route::post('form/jurusan', [JurusanController::class, 'storeJurusan'])->name('store.jurusan');
+    Route::get('form/update/jurusan/{id}', [JurusanController::class, 'formUpdateJurusan'])->name('update.jurusan');
+    Route::post('form/update/jurusan/{id}', [JurusanController::class, 'storeUpdateJurusan'])->name('store.update.jurusan');
+    Route::delete('form/update/jurusan/{id}', [JurusanController::class, 'deleteJurusan'])->name('delete.jurusan');
 
     Route::get('member')->name('member.aktif');
     Route::get('member')->name('member.nonaktif');

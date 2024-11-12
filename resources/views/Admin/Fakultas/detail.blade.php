@@ -11,13 +11,14 @@
                                         class="block py-2  text-gray-900 rounded md:bg-transparent md:p-0"
                                         aria-current="page">Back to list</a>
                                 </li>
+                                form
                             </ul>
                 </nav>
             </div>
         </div>
         <div class="p-4 bg-white">
             <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
-                @include('Admin.layout.updateForm.perguruanTinggi')
+
             </div>
         </div>
     </section>

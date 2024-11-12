@@ -1,6 +1,5 @@
 <form enctype="multipart/form-data" action="{{ route('store.pt') }}" method="POST">
     @csrf
-    @method('post')
     <div class="flex flex-wrap">
         <div class="w-full mb-4 mr-8">
             <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama Perguruan Tinggi</label>
@@ -28,26 +27,32 @@
             @enderror
         </div>
 
-        {{-- <div class="w-1/4 mb-4 mr-8">
-            <label for="brand_id" class="block mb-2 text-sm font-medium text-gray-900"></label>
-            <select id="brand_id" name="brand_id"
-                class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                <option value="" selected>Select</option>
-                @foreach ($brands as $brand)
-                    <option value="{{ $brand->id }}">{{ $brand->title }}</option>
-                @endforeach
-            </select>
-            @error('brand_id')
-                @include('Admin.layout.form.errorMessage')
-            @enderror
-        </div> --}}
-
         <div class="w-full mb-4 mr-8">
             <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900">Alamat</label>
-            <textarea  value="{{ old('alamat') }}" name="alamat" id="alamat"
+            <textarea  name="alamat" id="alamat"
                 class="bg-gray-50 border  max-h-28 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                placeholder="Masukkan Alamat Perguruan Tinggi"></textarea>
+                placeholder="Masukkan Alamat Perguruan Tinggi">{{ old('alamat') }}</textarea>
             @error('alamat')
+                @include('Admin.layout.form.errorMessage')
+            @enderror
+        </div>
+
+        <div class="w-full mb-4 mr-8">
+            <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
+            <textarea  name="deskripsi" id="deskripsi"
+                class="bg-gray-50 border  max-h-28 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                placeholder="Masukkan deskripsi Perguruan Tinggi">{{ old('deskripsi') }}</textarea>
+            @error('deskripsi')
+                @include('Admin.layout.form.errorMessage')
+            @enderror
+        </div>
+
+        <div class="w-full mb-4 mr-8">
+            <label for="slogan" class="block mb-2 text-sm font-medium text-gray-900">Jargon</label>
+            <input value="{{ old('slogan') }}" type="text" name="slogan" id="slogan"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                placeholder="Slogan Perguruan Tinggi">
+            @error('slogan')
                 @include('Admin.layout.form.errorMessage')
             @enderror
         </div>
@@ -55,7 +60,7 @@
         <div class="flex w-full items-center ">
             <div class="w-1/2 mb-4 mr-8">
                 <label for="telp" class="block mb-2 text-sm font-medium text-gray-900">Nomor Telpon</label>
-                <input value="{{ old('telp') }}" type="number" name="telp" id="telp"
+                <input value="{{ old('telp') }}" type="text" name="telp" id="telp"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Nomor Telpon">
                 @error('telp')
@@ -84,15 +89,28 @@
             </div>
         </div>
 
-        <div class="w-full mb-4 mr-8">
-            <label for="date" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Pendaftaran</label>
-            <input value="{{ old('date') }}" type="date" name="date" id="date"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                placeholder="">
-            @error('date')
-                @include('Admin.layout.form.errorMessage')
-            @enderror
+        <div class="flex w-full items-center">
+            <div class="w-1/2 mb-4 mr-8">
+                <label for="waktu_pendaftaran" class="block mb-2 text-sm font-medium text-gray-900">Waktu Pendaftaran Dibuka</label>
+                <input value="{{ old('waktu_pendaftaran_awal') }}" type="date" name="waktu_pendaftaran_awal" id="waktu_pendaftaran_awal"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    placeholder="">
+                @error('waktu_pendaftaran_awal')
+                    @include('Admin.layout.form.errorMessage')
+                @enderror
+            </div>
+
+            <div class="w-1/2 mb-4 mr-8">
+                <label for="waktu_pendaftaran" class="block mb-2 text-sm font-medium text-gray-900">Waktu Pendaftaran Berakhir</label>
+                <input value="{{ old('waktu_pendaftaran_berakhir') }}" type="date" name="waktu_pendaftaran_berakhir" id="waktu_pendaftaran_berakhir"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    placeholder="">
+                @error('waktu_pendaftaran_berakhir')
+                    @include('Admin.layout.form.errorMessage')
+                @enderror
+            </div>
         </div>
+
 
         <div class="w-full mb-4 mr-8">
             <label for="biaya" class="block mb-2 text-sm font-medium text-gray-900">Biaya Pendaftaran</label>
@@ -109,17 +127,20 @@
             <label class="block mb-2 text-sm font-medium text-gray-900" for="icon">Icon Perguruan Tinggi</label>
             <input
                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" id="icon" type="file" name="icon">
-
+                @error('icon')
+                @include('Admin.layout.form.errorMessage')
+            @enderror
         </div>
 
         <div class="w-full mb-4 mr-8">
             <label class="block mb-2 text-sm font-medium text-gray-900" for="banner">Banner Perguruan Tinggi</label>
             <input
                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" id="banner" type="file" multiple name="banner[]">
-        </div>
+                @error('banner')
+                @include('Admin.layout.form.errorMessage')
+            @enderror
+            </div>
 
     </div>
-    <button type="submit"
-        class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg">
-        Tambah Data</button>
+    <x-Admin.button>Tambah Data</x-Admin.button>
 </form>

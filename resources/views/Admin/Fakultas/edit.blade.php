@@ -1,5 +1,5 @@
 <x-Admin.app>
-    @section('title', 'Edit Perguruan Tinggi')
+    @section('title', 'Edit Fakultas')
     <section class="py-4 px-8 ">
         <div class="p-4 bg-white">
             <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
@@ -17,7 +17,7 @@
         </div>
         <div class="p-4 bg-white">
             <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
-                @include('Admin.layout.updateForm.perguruanTinggi')
+                @include('Admin.layout.updateForm.fakultas')
             </div>
         </div>
     </section>

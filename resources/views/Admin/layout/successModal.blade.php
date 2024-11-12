@@ -9,6 +9,6 @@
             </svg>
         </button>
     </div>
-    <p id="successMessage" class="text-sm text-gray-900">Data added successfully!</p>
+    <p id="successMessage" class="text-sm text-gray-900">Data Sukses Ditambahkan!</p>
 </div>
 </div>

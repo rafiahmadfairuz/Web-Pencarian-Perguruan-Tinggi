@@ -22,12 +22,13 @@ class PerguruanTinggiFactory extends Factory
             'slogan' => "Membangun Masa Depan Anda",
             'telp' => $this->faker->phoneNumber(),
             'email' => $this->faker->email(),
-            'web' => "www.kampus.com",
+            // 'web' => "www.kampus.com",
             'alamat' => $this->faker->streetAddress(),
             'biaya' => $this->faker->randomNumber(7, false),
             'kategori' => 'Politeknik',
-            'waktu_pendaftaran' => $this->faker->date(),
-            'foto' => 'ub.png',
+            'waktu_pendaftaran_awal' => "2024-11-01",
+            'waktu_pendaftaran_berakhir' => "2024-11-20",
+            'icon' => 'image/ub.png',
             'banner' => 'maha.jpg',
         ];
     }
