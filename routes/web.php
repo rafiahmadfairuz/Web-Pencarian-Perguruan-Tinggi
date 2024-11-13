@@ -28,11 +28,10 @@ Route::prefix('admin')->group(function () {
 
     Route::get('fakultas', [FakultasController::class, 'fakultas'])->name('view.fakultas');
     Route::get('fakultas/detail/{id}', [FakultasController::class, 'detailFakultas'])->name('detail.fakultas');
-    Route::get('form/fakultas', [FakultasController::class, 'formFakultas'])->name('create.fakultas');
     Route::post('form/fakultas', [FakultasController::class, 'storeFakultas'])->name('store.fakultas');
-    Route::get('form/update/fakultas/{id}', [FakultasController::class, 'formUpdateFakultas'])->name('update.fakultas');
+    // Route::get('form/update/fakultas/{id}', [FakultasController::class, 'formUpdateFakultas'])->name('update.fakultas');
     Route::post('form/update/fakultas/{id}', [FakultasController::class, 'storeUpdateFakultas'])->name('store.update.fakultas');
-    Route::delete('form/update/fakultas/{id}', [FakultasController::class, 'deleteFakultas'])->name('delete.fakultas');
+    Route::delete('form/delete/fakultas/{id}', [FakultasController::class, 'deleteFakultas'])->name('delete.fakultas');
 
     Route::get('jurusan', [JurusanController::class, 'jurusan'])->name('view.jurusan');
     Route::get('jurusan/detail/{id}', [JurusanController::class, 'detailJurusan'])->name('detail.jurusan');
@@ -41,6 +40,7 @@ Route::prefix('admin')->group(function () {
     Route::get('form/update/jurusan/{id}', [JurusanController::class, 'formUpdateJurusan'])->name('update.jurusan');
     Route::post('form/update/jurusan/{id}', [JurusanController::class, 'storeUpdateJurusan'])->name('store.update.jurusan');
     Route::delete('form/update/jurusan/{id}', [JurusanController::class, 'deleteJurusan'])->name('delete.jurusan');
+    Route::get('/form/jurusan', [JurusanController::class, 'viewJurusan'])->name('view.jurusan');
 
     Route::get('member')->name('member.aktif');
     Route::get('member')->name('member.nonaktif');

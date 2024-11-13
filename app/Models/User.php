@@ -51,4 +51,21 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(PerguruanTinggi::class, 'perguruan_tinggi_user', 'user_id' , 'perguruan_tinggi_id');
     }
+
+    public function scopeFilter($query, $filters): void
+    {
+         $query->when(
+            $filters ?? false,
+            fn ($query, $search) =>
+            $query->where('name' ,'like', '%' . $search . '%' )
+         );
+    }
+    public function scopeStatus($query, $filters): void
+    {
+        $query->when(
+           $filters ?? false,
+           fn ($query) =>
+           $query->where('status', $filters)
+        );
+    }
 }

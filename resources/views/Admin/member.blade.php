@@ -14,21 +14,22 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                 </svg>
             </div>
-            <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Berdasarkan Nama atau Email" required />
+            <input type="search" name="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Berdasarkan Nama atau Email"  />
             <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
         </div>
     </form>
 
-    <div class="flex w-1/2 gap-2">
+    <form class="flex w-1/2 gap-2 items-center">
         <div class="flex items-center w-1/2 ps-4 border border-gray-200 rounded dark:border-gray-700">
-            <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <input id="bordered-radio-1" name="status" value="0"  type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label for="bordered-radio-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Aktif</label>
         </div>
         <div class="flex items-center w-1/2 ps-4 border border-gray-200 rounded dark:border-gray-700">
-            <input checked id="bordered-radio-2" type="radio" value="" name="bordered-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <input  id="bordered-radio-2" name="status" value="1" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label for="bordered-radio-2" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Non - Aktif</label>
         </div>
-    </div>
+        <button type="submit" class="h-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Terapkan</button>
+    </form>
 </div>
 
         <div class="p-4 sm:ml-64">
@@ -59,7 +60,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($members as $member)
+                            @forelse ($members as $member)
                                 <tr class="bg-white border-b">
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -81,8 +82,13 @@
                                         <a href=" {{  $member->status == 0 ? route('member.nonaktif', $member->id) : route('member.aktif', $member->id) }} " type="button" class="text-sm
                                             font-medium text-red-500">{{ $member->status == 0 ? " Nonaktifkan" : "Aktifkan"}}</a>
                                     </td>
-                                </tr>
-                            @endforeach
+
+                            @empty
+                                 <td colspan="6" class="py-5 text-center text-2xl font-bold text-red-400">
+                                    Data Tidak Tersedia
+                                 </td>
+                            @endforelse
+                        </tr>
                         </tbody>
                     </table>
                 </div>
