@@ -1,20 +1,20 @@
 <x-Admin.app>
-    @section('title', 'Daftar Fakultas')
+    @section('title', 'Daftar Jurusan')
     <section class="py-4">
         @include('Admin.layout.successModal')
         <x-Admin.navbar></x-Admin.navbar>
         <div class="p-4 sm:ml-64">
-            @include('Admin.layout.form.modalForm')
+            @include('Admin.layout.form.jurusan')
             @error('Nama')
-                @include('Admin.layout.form.errorMessage')
+            @include('Admin.layout.form.errorMessage')
             @enderror
-            @if (session('error'))
-                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-                    <span class="font-medium">{{ session('error') }}</span>
-                </div>
+            @if(session('error'))
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+                <span class="font-medium">{{ session('error') }}</span>
+            </div>
             @endif
             <div class="my-3 p-4 border-2 border-gray-200 border-dashed rounded-lg shadow-lg bg-white">
-                <h2 class="mb-4 text-xl font-bold text-gray-900">List Fakultas</h2>
+                <h2 class="mb-4 text-xl font-bold text-gray-900">List Jurusan</h2>
 
                 <div class="relative overflow-x-auto">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
@@ -30,21 +30,21 @@
                         </thead>
                         <tbody>
 
-                            @foreach ($fakultas as $fk)
+                            @foreach ($jurusan as $jr)
                                 <tr>
                                     <td scope="col" class="px-6 py-4">
-                                        <span class="{{ $fk->status == 0 ? " " : "bg-red-100 text-red-800" }} text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">{{ $fk->status == 0 ?   $fk->nama : "$fk->nama (Disabled)"}}</span>
+                                        <span class="{{ $jr->status == 0 ? " " : "bg-red-100 text-red-800" }} text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">{{ $jr->status == 0 ?   $jr->nama : "$jr->nama (Disabled)"}}</span>
                                     </td>
                                     <td scope="col" class="px-6 py-3">
-                                        @include('Admin.layout.updateForm.modalForm')
+                                        @include('Admin.layout.updateForm.jurusanUpdate')
                                         |
-                                        <a href="{{ route('detail.fakultas', $fk->id) }} " type="button"
-                                            class="text-sm
+                                        <a href="{{ route('detail.jurusan', $jr->id) }} " type="button" class="text-sm
                                             font-medium text-red-500">Detail</a>
                                         |
-                                        <a href="{{ $fk->status == 0 ? route('disabled.fakultas', $fk->id) : route('enable.fakultas', $fk->id) }}" type="button"
+                                        <a href="{{ $jr->status == 0 ? route('disabled.jurusan', $jr->id) : route('enable.jurusan', $jr->id) }}" type="button"
                                             class="text-sm
-                                                font-medium text-red-500">{{ $fk->status == 0 ? "Disabled" : "Enable" }}</a>
+                                                font-medium text-red-500">{{ $jr->status == 0 ? "Disabled" : "Enable" }}</a>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -56,3 +56,7 @@
     </section>
     @include('Admin.layout.successModalScript')
 </x-Admin.app>
+
+
+
+

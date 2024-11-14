@@ -14,12 +14,12 @@ class FakultasController extends Controller
     }
     public function detailFakultas($id)
     {
- 
+
     }
     public function storeFakultas(Request $request)
     {
         $request->validate([
-          'nama' => 'required|min:4|max:50|unique:fakultas,name'
+          'nama' => 'required|min:4|max:50|unique:fakultas,nama'
         ]);
         Fakultas::create([
             'nama' => $request->nama,
@@ -48,6 +48,23 @@ class FakultasController extends Controller
         $fakultasTerpilih = Fakultas::findOrFail($id);
         $fakultasTerpilih->delete();
         return redirect()->route('view.fakultas')->with('sukses', 'Fakultas Berhasil Dihapus');
+    }
+
+    public function disabled($id)
+    {
+        $fakultasTerpilih = Fakultas::findOrFail($id);
+        $fakultasTerpilih->update([
+            'status' => 1
+        ]);
+        return redirect()->back()->with('sukses', "Sukses Menonaktifkan $fakultasTerpilih->nama");
+    }
+    public function enable($id)
+    {
+        $fakultasTerpilih = Fakultas::findOrFail($id);
+        $fakultasTerpilih->update([
+            'status' => 0
+        ]);
+        return redirect()->back()->with('sukses', "Sukses Mengaktifkan $fakultasTerpilih->nama");
     }
 
 }
