@@ -29,5 +29,5 @@ class MemberController extends Controller
         $data = User::findOrFail($dataUser);
         return view('Member.form-pendaftaran', compact('data'));
     }
-   
+
 }

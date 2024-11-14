@@ -13,6 +13,6 @@ class PerguruanTinggiSeeder extends Seeder
      */
     public function run(): void
     {
-        PerguruanTinggi::factory(20)->create();
+        PerguruanTinggi::factory(50)->create();
     }
 }

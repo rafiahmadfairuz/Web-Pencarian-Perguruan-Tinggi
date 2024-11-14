@@ -8,8 +8,8 @@
             </a>
             <span class="block text-sm text-center text-gray-500 dark:text-gray-400">
                 © 2021-2022 KampusMalang™. All Rights Reserved. Built with
-                <a href="https://flowbite.com" class="text-purple-600 hover:underline dark:text-purple-500">Rafi</a>
-                and <a href="https://tailwindcss.com" class="text-purple-600 hover:underline dark:text-purple-500">KampusMalang.</a>.
+                <a href="#" class="text-purple-600 hover:underline dark:text-purple-500">Rafi</a>
+                and <a href="#" class="text-purple-600 hover:underline dark:text-purple-500">KampusMalang.</a>.
             </span>
             <ul class="flex justify-center mt-5 space-x-5">
                 <li>

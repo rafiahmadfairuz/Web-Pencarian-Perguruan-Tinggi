@@ -43,21 +43,21 @@ class PerguruanTinggiController extends Controller
              'banner' => 'required',
              'banner.*' => 'mimes:jpg,jpeg,png'
         ]);
-
+        if(substr($request->telp, 0, 1) != 0 ){
+            return redirect()->back()->withErrors(['telp' => 'Nomor Telepon Harus Diawali dengan 0']);
+        }
         $icon = $request->file('icon');
         $simpan = $icon->store('image', 'public');
         $validasi['icon'] = $simpan;
 
         if($request->hasFile('banner')) {
             $jumlahGambar = count($request->file('banner'));
-            if($jumlahGambar < 6 || $jumlahGambar > 6) {
-                return redirect()->back()->with('banner', 'Image Harus Berjumlah 6');
-            } else {
+
                 foreach($request->file('banner') as $image) {
                     $penyimpananGambar = $image->store('image', 'public');
                     $gambar[] = $penyimpananGambar;
                  }
-            }
+            
             $semuaGambar = implode(',', $gambar);
          }
         $validasi['banner'] = $semuaGambar;
