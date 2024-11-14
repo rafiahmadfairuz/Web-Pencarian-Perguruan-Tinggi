@@ -37,8 +37,9 @@
                 </x-Admin.link>
             </li>
         </ul>
-        <form action="" method="POST">
+        <form action="{{ route('logout') }}" method="POST">
             @csrf
+            @method('DELETE')
             <button type="submit"
                 class="flex items-center align-bottom text-red-500 p-2 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <i class="fas fa-sign-out-alt"></i><span class="ms-3">Logout</span>

@@ -39,6 +39,9 @@ class AuthController extends Controller
             'telepon' => 'required',
             'ttl' => 'required',
         ]);
+        if(substr($request->telepon, 0, 1) != 0 ){
+            return redirect()->back()->withErrors(['telepon' => 'Nomor Telepon Harus Diawali dengan 0']);
+        }
         User::create([
           'name' => $validate['nama'],
           'email' => $validate['email'],

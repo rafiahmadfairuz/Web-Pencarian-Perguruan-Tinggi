@@ -16,7 +16,7 @@
                 <div class="deskripsi">
                     <span>{{ $p->kategori }}</span>
                     <div class="judul">
-                        <img src="{{ url('storage/image/' . $p->foto) }}" alt="">
+                        <img src="{{ url('storage/' . $p->icon) }}" alt="">
                         <h5>{{ $p->nama }}</h5>
                     </div>
                     <p>{{ Str::limit($p->deskripsi, 150, '...') }}</p>

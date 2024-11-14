@@ -67,7 +67,7 @@
                                         {{ $member->name }}
                                     </th>
                                     <td class="px-6 py-4">
-                                        <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300"> {{ $member->status == 0 ? "Aktif" : "Nonaktif" }}</span>
+                                        <span class="{{ $member->status == 0 ? "bg-red-50 text-red-800" : "bg-red-800 text-white" }}  text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300"> {{ $member->status == 0 ? "Aktif" : "Nonaktif" }}</span>
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ $member->email }}

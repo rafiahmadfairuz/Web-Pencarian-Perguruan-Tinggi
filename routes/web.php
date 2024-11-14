@@ -54,8 +54,10 @@ Route::middleware('auth')->group(function () {
         Route::get('jurusan/disabled/{idjurusan}', [JurusanController::class, 'disabled'])->name('disabled.jurusan');
         Route::get('jurusan/enable/{idjurusan}', [JurusanController::class, 'enable'])->name('enable.jurusan');
 
-        Route::get('member')->name('member.aktif');
-        Route::get('member')->name('member.nonaktif');
+        Route::get('member/aktifkan/{user}', [AdminController::class, 'mengaktifkan'])->name('member.aktif');
+        Route::get('member/nonaktifkan/{user}', [AdminController::class, 'menonaktifkan'])->name('member.nonaktif');
+
+        Route::delete('admin/logout', [AuthController::class, 'logout'])->name('logout');
     });
 
 });

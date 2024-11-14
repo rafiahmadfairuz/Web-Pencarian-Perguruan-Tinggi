@@ -38,7 +38,7 @@
                 </div>
                 <div class="input_container">
                   <label for="telepon" class="input_label">Nomor Telepon</label>
-                  <input id="telepon" class="input_field" type="number" name="telepon" value="{{old('telepon')}}" title="Inpit title" placeholder="+ 62">
+                  <input id="telepon" class="input_field" type="number" name="telepon" value="{{old('telepon')}}" title="Inpit title" placeholder="Diawali Dengan Angka 0">
                   @error('telepon')
                        <p class="eror">{{$message}}</p>
                     @enderror
