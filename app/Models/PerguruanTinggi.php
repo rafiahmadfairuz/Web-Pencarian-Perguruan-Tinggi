@@ -28,4 +28,21 @@ class PerguruanTinggi extends Model
     {
         return $this->hasOne(Admin::class);
     }
+
+    public function scopeCari($query, $filters): void
+    {
+         $query->when(
+            $filters ?? false,
+            fn ($query, $search) =>
+            $query->where('nama' ,'like', '%' . $search . '%' )
+         );
+    }
+    public function scopeStatus($query, $filters): void
+    {
+        $query->when(
+           $filters ?? false,
+           fn ($query) =>
+           $query->where('status', $filters)
+        );
+    }
 }

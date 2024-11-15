@@ -18,7 +18,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('pt/{id}', [MemberController::class, 'detailPt'])->name('detail.pt');
         Route::get('home', [MemberController::class, 'index'])->name('home');
-        Route::get('profile', [MemberController::class, 'profile'])->name('profile');
+        Route::get('profile/{user}', [MemberController::class, 'profile'])->name('profile');
         Route::get('form-daftar', [MemberController::class, 'formDaftar'])->name('daftar');
     });
 

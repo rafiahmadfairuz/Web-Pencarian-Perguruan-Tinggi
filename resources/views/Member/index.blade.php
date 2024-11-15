@@ -21,7 +21,7 @@
                         </div>
                         <p class=" break-words ">{{ Str::limit($p->deskripsi, 100, '...') }}</p>
                     </div>
-                    <a href="{{ route('detail.pt', $p->id) }}">Selengkapnya ></i></a>
+                    <a href="{{ route('detail.pt', $p->id) }}">Selengkapnya <i class="fa-solid fa-arrow-right mt-2 ms-2 "></i></a>
                 </div>
             @empty
         </div>
@@ -29,7 +29,7 @@
         @endforelse
 
     </div>
-    <div class="container ">
+    <div class="container flex justify-center">
         {{ $pt->links() }}
     </div>
     <div class="w-full">

@@ -6,15 +6,15 @@
                 <img src="{{url('storage/image/maha.jpg')}}" class="profile_picture" alt="">
                 <div>
                     <div class="name_role">
-                        <h1>Millie G Marshall</h1>
-                        {{-- <span class="role">Member</span> --}}
+                        <h1>{{ $user->name }} |  <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">  {{ $user->roles == "member" ? "Member" : "Admin" }}</span></h1>
+
                     </div>
-                    <p class="pe">Januari 1, 2024 | Aktif</p>
+                    <p class="pe">{{ $user->ttl  }} : {{ $user->status == 0 ?  "Aktif" : "Nonaktif"}}</p>
                 </div>
             </div>
                 <div class="kanan">
-                    <p class="kan">+62 9548 4328 234</p>
-                    <p class="kan">rafiahmad@gmail.com</p>
+                    <p class="kan">+{{ $user->telepon }}</p>
+                    <p class="kan">{{ $user->email }}</p>
                     <form action="{{route('logout')}}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -29,7 +29,7 @@
 
 
 
-<div class="relative overflow-y-auto shadow-lg max-h-96 sm:rounded-lg my-5 ">
+<div class="relative overflow-y-auto shadow-lg max-h-80 sm:rounded-lg my-5 ">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -53,13 +53,13 @@
         <tbody>
             <tr class="bg-white  border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17"
+                    Universitas Brawijaya
                 </th>
                 <td class="px-6 py-4">
-                    Silver
+                    Fakultas Komputer
                 </td>
                 <td class="px-6 py-4">
-                    Laptop
+                    Teknik Informatika
                 </td>
                 <td class="px-6 py-4">
                     <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">Pending</span>
@@ -70,13 +70,13 @@
             </tr>
             <tr class="bg-white  border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Microsoft Surface Pro
+                    Insitut Teknologi 10 November
                 </th>
                 <td class="px-6 py-4">
-                    White
+                    Fakultas Kedokteran
                 </td>
                 <td class="px-6 py-4">
-                    Laptop PC
+                    Teknik Jaringan Koko
                 </td>
                 <td class="px-6 py-4">
                     <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Diterima</span>
@@ -87,13 +87,81 @@
             </tr>
             <tr class="bg-white  border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Magic Mouse 2
+                    Universitas Indonesia
                 </th>
                 <td class="px-6 py-4">
-                    Black
+                 Fakultas Manusia
                 </td>
                 <td class="px-6 py-4">
-                    Accessories
+                    Cosplayer
+                </td>
+                <td class="px-6 py-4">
+                    <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Ditolak</span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
+                </td>
+            </tr>
+            <tr class="bg-white  border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Universitas Negri Semarang
+                </th>
+                <td class="px-6 py-4">
+                 Fakultas Manusia
+                </td>
+                <td class="px-6 py-4">
+                    Cosplayer
+                </td>
+                <td class="px-6 py-4">
+                    <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Ditolak</span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
+                </td>
+            </tr>
+            <tr class="bg-white  border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Universitas Indonesia
+                </th>
+                <td class="px-6 py-4">
+                 Fakultas Manusia
+                </td>
+                <td class="px-6 py-4">
+                    Cosplayer
+                </td>
+                <td class="px-6 py-4">
+                    <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Ditolak</span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
+                </td>
+            </tr>
+            <tr class="bg-white  border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Universitas Indonesia
+                </th>
+                <td class="px-6 py-4">
+                 Fakultas Manusia
+                </td>
+                <td class="px-6 py-4">
+                    Cosplayer
+                </td>
+                <td class="px-6 py-4">
+                    <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Ditolak</span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
+                </td>
+            </tr>
+            <tr class="bg-white  border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Universitas Indonesia
+                </th>
+                <td class="px-6 py-4">
+                 Fakultas Manusia
+                </td>
+                <td class="px-6 py-4">
+                    Cosplayer
                 </td>
                 <td class="px-6 py-4">
                     <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Ditolak</span>

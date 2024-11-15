@@ -11,7 +11,13 @@ class MemberController extends Controller
 {
     public function index()
     {
-        $pt = PerguruanTinggi::latest()->paginate(20);
+        if (request('cari')) {
+            $pt = PerguruanTinggi::cari(request('cari'))->paginate(20);
+        } elseif (request('status')) {
+            $pt = PerguruanTinggi::cari(request('cari'))->paginate(20);
+        } else {
+            $pt = PerguruanTinggi::latest()->paginate(20);
+        }
         return view('Member.index', compact('pt'));
     }
     public function detailPt($id)
@@ -19,9 +25,9 @@ class MemberController extends Controller
         $ptTerpilih = PerguruanTinggi::findOrFail($id);
         return view('Member.detail', compact('ptTerpilih'));
     }
-    public function profile()
+    public function profile(User $user)
     {
-        return view('Member.profile');
+        return view('Member.profile', compact('user'));
     }
     public function formDaftar()
     {
