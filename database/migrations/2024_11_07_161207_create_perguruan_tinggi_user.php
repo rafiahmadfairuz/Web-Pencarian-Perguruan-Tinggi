@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('fakultas_id')->constrained();
             $table->foreignId('jurusan_id')->constrained();
             $table->text('alamat');
+            $table->string('telp');
+            $table->date('ttl');
             $table->text('nilai_akhir');
             $table->enum('status', ['Pending', 0, 1])->default('Pending');
             $table->timestamps();

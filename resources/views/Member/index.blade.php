@@ -1,5 +1,7 @@
 <x-Member.app>
     @section('title', 'Home')
+    @include('Admin.layout.successModal')
+
     <x-Member.navbar></x-Member.navbar>
     <x-Member.hero></x-Member.hero>
 
@@ -35,4 +37,6 @@
     <div class="w-full">
         <x-Member.footer></x-Member.footer>
     </div>
+    @include('Admin.layout.successModalScript')
+
 </x-Member.app>

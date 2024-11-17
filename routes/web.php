@@ -18,8 +18,9 @@ Route::middleware('auth')->group(function () {
         Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('pt/{id}', [MemberController::class, 'detailPt'])->name('detail.pt');
         Route::get('home', [MemberController::class, 'index'])->name('home');
-        Route::get('profile/{user}', [MemberController::class, 'profile'])->name('profile');
-        Route::get('form-daftar', [MemberController::class, 'formDaftar'])->name('daftar');
+        Route::get('profile/{id}', [MemberController::class, 'profile'])->name('profile');
+        Route::get('form-daftar/{id}', [MemberController::class, 'formDaftar'])->name('daftar');
+        Route::post('daftar/{id}', [MemberController::class, 'storeDaftar'])->name('store.daftar');
     });
 
     Route::prefix('admin')->group(function () {
@@ -68,3 +69,5 @@ Route::middleware('guest')->group(function () {
     Route::get('register', [AuthController::class, 'register'])->name('register');
     Route::post('register', [AuthController::class, 'storeRegister'])->name('store.register');
 });
+
+

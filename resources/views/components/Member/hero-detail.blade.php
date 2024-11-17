@@ -8,7 +8,7 @@
                 {{ $ptTerpilih->deskripsi }}
             </p>
             <div class="space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-                <a href="{{ route('daftar') }}" class="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-center text-white bg-blue-600 rounded-lg sm:w-auto hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                <a href="{{ route('daftar', $ptTerpilih->id) }}" class="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-medium text-center text-white bg-blue-600 rounded-lg sm:w-auto hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
                     Daftar Sekarang
                 </a>
             </div>

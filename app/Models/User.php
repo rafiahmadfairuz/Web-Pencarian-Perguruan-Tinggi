@@ -47,9 +47,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function perguruanTinggi(): BelongsToMany
+    public function pt(): BelongsToMany
     {
-        return $this->belongsToMany(PerguruanTinggi::class, 'perguruan_tinggi_user', 'user_id' , 'perguruan_tinggi_id');
+        return $this->belongsToMany(PerguruanTinggi::class, 'perguruan_tinggi_user', 'user_id' , 'perguruan_tinggi_id')->withPivot('fakultas_id', 'jurusan_id', 'alamat', 'nilai_akhir', 'status');
     }
 
     public function scopeFilter($query, $filters): void

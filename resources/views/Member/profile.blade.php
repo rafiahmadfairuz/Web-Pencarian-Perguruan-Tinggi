@@ -1,4 +1,5 @@
 <x-Member.app>
+    @section('title', 'Profile ' . $userPT->name)
     <x-Member.navbar-detail></x-Member.navbar-detail>
     <div class="profile">
         <div class="detail_profile">
@@ -6,15 +7,15 @@
                 <img src="{{url('storage/image/maha.jpg')}}" class="profile_picture" alt="">
                 <div>
                     <div class="name_role">
-                        <h1>{{ $user->name }} |  <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">  {{ $user->roles == "member" ? "Member" : "Admin" }}</span></h1>
+                        <h1>{{ $userPT->name }} |  <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">  {{ $userPT->roles == "member" ? "Member" : "Admin" }}</span></h1>
 
                     </div>
-                    <p class="pe">{{ $user->ttl  }} : {{ $user->status == 0 ?  "Aktif" : "Nonaktif"}}</p>
+                    <p class="pe">{{ $userPT->ttl  }} : {{ $userPT->status == 0 ?  "Aktif" : "Nonaktif"}}</p>
                 </div>
             </div>
                 <div class="kanan">
-                    <p class="kan">+{{ $user->telepon }}</p>
-                    <p class="kan">{{ $user->email }}</p>
+                    <p class="kan">+{{ $userPT->telepon }}</p>
+                    <p class="kan">{{ $userPT->email }}</p>
                     <form action="{{route('logout')}}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -51,125 +52,37 @@
             </tr>
         </thead>
         <tbody>
+            @forelse ($userPT->pt as $pt)
             <tr class="bg-white  border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Universitas Brawijaya
+                    {{ $pt->nama }}
                 </th>
                 <td class="px-6 py-4">
-                    Fakultas Komputer
+                    {{ $pt->fakultas[0]->nama }}
                 </td>
                 <td class="px-6 py-4">
-                    Teknik Informatika
+                    {{ $pt->jurusan[0]->nama }}
                 </td>
                 <td class="px-6 py-4">
-                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">Pending</span>
+                    <span class="{{ $pt->pivot->status == 1 ? "bg-blue-100" : ($pt->pivot->status == 0 ? "bg-red-500 text-white" : "bg-yellow-100")}}   text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
+                     @if($pt->pivot->status == 1)
+                          Diterima
+                     @elseif($pt->pivot->status == 0)
+                           Ditolak
+                     @else
+                           Pending
+                     @endif
+                    </span>
                 </td>
                 <td class="px-6 py-4 text-right">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
                 </td>
-            </tr>
-            <tr class="bg-white  border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Insitut Teknologi 10 November
-                </th>
-                <td class="px-6 py-4">
-                    Fakultas Kedokteran
-                </td>
-                <td class="px-6 py-4">
-                    Teknik Jaringan Koko
-                </td>
-                <td class="px-6 py-4">
-                    <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Diterima</span>
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
-                </td>
-            </tr>
-            <tr class="bg-white  border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Universitas Indonesia
-                </th>
-                <td class="px-6 py-4">
-                 Fakultas Manusia
-                </td>
-                <td class="px-6 py-4">
-                    Cosplayer
-                </td>
-                <td class="px-6 py-4">
-                    <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Ditolak</span>
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
-                </td>
-            </tr>
-            <tr class="bg-white  border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Universitas Negri Semarang
-                </th>
-                <td class="px-6 py-4">
-                 Fakultas Manusia
-                </td>
-                <td class="px-6 py-4">
-                    Cosplayer
-                </td>
-                <td class="px-6 py-4">
-                    <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Ditolak</span>
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
-                </td>
-            </tr>
-            <tr class="bg-white  border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Universitas Indonesia
-                </th>
-                <td class="px-6 py-4">
-                 Fakultas Manusia
-                </td>
-                <td class="px-6 py-4">
-                    Cosplayer
-                </td>
-                <td class="px-6 py-4">
-                    <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Ditolak</span>
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
-                </td>
-            </tr>
-            <tr class="bg-white  border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Universitas Indonesia
-                </th>
-                <td class="px-6 py-4">
-                 Fakultas Manusia
-                </td>
-                <td class="px-6 py-4">
-                    Cosplayer
-                </td>
-                <td class="px-6 py-4">
-                    <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Ditolak</span>
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
-                </td>
-            </tr>
-            <tr class="bg-white  border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Universitas Indonesia
-                </th>
-                <td class="px-6 py-4">
-                 Fakultas Manusia
-                </td>
-                <td class="px-6 py-4">
-                    Cosplayer
-                </td>
-                <td class="px-6 py-4">
-                    <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Ditolak</span>
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
-                </td>
-            </tr>
+
+            @empty
+              <td colspan="5" class="text-center py-5 text-2xl font-bold">Belum mendaftar kemanapun</td>
+            @endforelse
+        </tr>
+
         </tbody>
     </table>
 </div>

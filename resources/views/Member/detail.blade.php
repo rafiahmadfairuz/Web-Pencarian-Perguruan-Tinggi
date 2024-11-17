@@ -32,6 +32,6 @@
     <x-Member.kata-kata></x-Member.kata-kata>
     <x-Member.biaya-detail></x-Member.biaya-detail>
     <x-Member.pertanyaan-detail></x-Member.pertanyaan-detail>
-    <x-Member.gas-daftar></x-Member.gas-daftar>
+    @include('components.Member.gas-daftar')
     <x-Member.footer></x-Member.footer>
 </x-Member.app>

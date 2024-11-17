@@ -5,8 +5,13 @@
             <div class="filter">
             <div class="ff">
                 <div class="f">
-                    <label for="">Akreditasi</label>
-                    <input type="text" placeholder="Cari Sekarang">
+                    <label for="akreditasi">Akreditasi</label>
+                    <select name="akreditasi" id="akreditasi">
+                        <option value="" disabled selected>Cari Berdasarkan Akreditasi</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                    </select>
                 </div>
                 <div class="f">
                     <label for="">Jurusan</label>
