@@ -13,3 +13,32 @@ window.addEventListener('scroll', function() {
         logo.style.color = "white"
     }
 });
+document.getElementById('fakultas').addEventListener('change', function () {
+    let fakultasId = this.value
+
+    if(fakultasId){
+        fetch('/member/jurusan/' + fakultasId, {
+            method: 'GET',
+        })
+        .then(response => response.json())
+        .then(data => {
+            // console.log(data)
+            let jurusan = document.getElementById('jurusan')
+            jurusan.innerHTML = ''
+
+            data.forEach(function(value, key) {
+                // console.log(value.id + value.nama)
+                let pilihan = document.createElement('option')
+                pilihan.value = value.id
+                pilihan.textContent = value.nama
+                jurusan.appendChild(pilihan)
+            });
+        })
+        .catch(error => {
+              console.error('Error nya : ', error)
+        })
+    } else {
+        document.getElementById('jurusan').innerHTML = ''
+    }
+});
+

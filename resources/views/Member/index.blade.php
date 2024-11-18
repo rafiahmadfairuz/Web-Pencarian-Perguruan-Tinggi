@@ -16,7 +16,7 @@
                 <div class="kartu">
                     <img src="{{ url('storage/image/' . $p->banner) }}" class="banner" alt="">
                     <div class="deskripsi">
-                        <span class="wrap">{{ $p->kategori }}</span>
+                        <span class="{{ $p->kategori == "Politeknik" ? "bg-blue-100 text-blue-800" : ($p->kategori == "Negri" ? "bg-yellow-100 text-yellow-800" : ($p->kategori == "Swasta" ? "bg-gray-100 text-gray-800" : ($p->kategori == "Sekolah Tinggi" ? "bg-indigo-100 text-indigo-800" : "bg-red-100 text-red-800"))) }} text-xs font-medium me-2 px-2.5 py-0.5 rounded">{{ $p->kategori }}</span>
                         <div class="judul">
                             <img src="{{ url('storage/' . $p->icon) }}" alt="">
                             <h5>{{ $p->nama }}</h5>

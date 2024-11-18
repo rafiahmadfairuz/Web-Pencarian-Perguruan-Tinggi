@@ -4,19 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Fakultas extends Model
 {
     /** @use HasFactory<\Database\Factories\FakultasFactory> */
     use HasFactory;
     protected $guarded = ['id'];
-    public function perguruanTinggi(): BelongsToMany
+    public function perguruanTinggi(): BelongsTo
     {
-        return $this->belongsToMany(PerguruanTinggi::class, 'perguruan_tinggi_fakultas_jurusan');
+        return $this->belongsTo(PerguruanTinggi::class);
     }
-    public function fakultas(): BelongsToMany
+    public function jurusan(): HasMany
     {
-        return $this->belongsToMany(Fakultas::class, 'perguruan_tinggi_fakultas_jurusan');
+        return $this->hasMany(Jurusan::class);
     }
 }

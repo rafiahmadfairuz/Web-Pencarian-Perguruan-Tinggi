@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Jurusan extends Model
@@ -11,12 +12,12 @@ class Jurusan extends Model
     /** @use HasFactory<\Database\Factories\JurusanFactory> */
     use HasFactory;
     protected $guarded = ['id'];
-    public function perguruanTinggi(): BelongsToMany
+    public function perguruanTinggi(): BelongsTo
     {
-        return $this->belongsToMany(PerguruanTinggi::class, 'perguruan_tinggi_fakultas_jurusan');
+        return $this->belongsTo(PerguruanTinggi::class);
     }
-    public function jurusan(): BelongsToMany
+    public function jurusan(): BelongsTo
     {
-        return $this->belongsToMany(Jurusan::class, 'perguruan_tinggi_fakultas_jurusan');
+        return $this->belongsTo(Fakultas::class);
     }
 }

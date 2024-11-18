@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class PerguruanTinggi extends Model
@@ -16,13 +17,14 @@ class PerguruanTinggi extends Model
     {
         return $this->belongsToMany(User::class, 'perguruan_tinggi_user', 'perguruan_tinggi_id', 'user_id');
     }
-    public function fakultas(): BelongsToMany
+    
+    public function fakultas(): HasMany
     {
-        return $this->belongsToMany(Fakultas::class, 'perguruan_tinggi_fakultas_jurusan');
+        return $this->hasMany(Fakultas::class);
     }
-    public function jurusan(): BelongsToMany
+    public function jurusan(): HasMany
     {
-        return $this->belongsToMany(Jurusan::class, 'perguruan_tinggi_fakultas_jurusan');
+        return $this->hasMany(Fakultas::class);
     }
     public function admin(): HasOne
     {

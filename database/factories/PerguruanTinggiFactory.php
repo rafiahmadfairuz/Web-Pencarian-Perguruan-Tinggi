@@ -25,7 +25,7 @@ class PerguruanTinggiFactory extends Factory
             // 'web' => "www.kampus.com",
             'alamat' => $this->faker->streetAddress(),
             'biaya' => $this->faker->randomNumber(7, false),
-            'kategori' => 'Politeknik',
+            'kategori' => $this->faker->randomElement(['Politeknik', 'Swasta', 'Negri', 'Sekolah Tinggi', 'Institut']),
             'waktu_pendaftaran_awal' => "2024-11-01",
             'waktu_pendaftaran_berakhir' => "2024-11-20",
             'icon' => 'image/ub.png',

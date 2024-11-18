@@ -59,32 +59,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($mahasiswa as $mb)
+                            @foreach ($mahasiswa as $maha)
+                                @forelse ($maha->pt as $maba)
                                 <tr class="bg-white border-b">
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $mb->name }}
+                                        {{ $maba->nama }}
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{ $mb->email }}
+                                        {{ $maba->email }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $mb->perguruanTinggi->fakultas_id[0] }}
+                                        {{ $maba->pivot->fakultas_id }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $mb->jurusan_id }}
+                                        {{ $maba->pivot->jurusan_id }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $mb->jurusan_id }}
+                                        {{ $maba->pivot->jurusan_id }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300"> {{ $mb->status == 0 ? "Aktif" : "Nonaktif" }}</span>
+                                        <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300"> {{ $maba->status == 0 ? "Aktif" : "Nonaktif" }}</span>
                                     </td>
                                     {{-- <td class="px-6 py-4">
                                         <a href=" {{  $mb->status == 0 ? route('mb.nonaktif', $mb->id) : route('mb.aktif', $mb->id) }} " type="button" class="text-sm
                                             font-medium text-red-500">{{ $mb->status == 0 ? " Nonaktifkan" : "Aktifkan"}}</a>
                                     </td> --}}
-                                </tr>
+                                @empty
+                                   <td colspan="6">Belum ada Yang Daftar</td>
+                                @endforelse
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>

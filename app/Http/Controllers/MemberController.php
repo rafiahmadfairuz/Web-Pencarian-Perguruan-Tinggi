@@ -43,9 +43,17 @@ class MemberController extends Controller
     {
         $data = User::findOrFail(Auth::user()->id);
         $pt = PerguruanTinggi::findOrFail($id);
-        $fakultas = Fakultas::where('status', 0)->get();
-        $jurusan = Jurusan::where('status', 0)->get();
-        return view('Member.form-pendaftaran', compact('data', 'fakultas', 'jurusan', 'pt'));
+        $fakultas = Fakultas::where('status', 0)
+        ->where('perguruan_tinggi_id', $id)
+        ->get();
+        return view('Member.form-pendaftaran', compact('data', 'fakultas', 'pt'));
+    }
+    public function jurusan($id)
+    {
+        $jurusan = Jurusan::where('status', 0)
+        ->where('fakultas_id', $id)
+        ->get();
+        return response()->json($jurusan);
     }
 
     public function storeDaftar(Request $request, $id)
@@ -68,6 +76,9 @@ class MemberController extends Controller
         $userMendaftar = User::findOrFail($id);
         $userMendaftar->pt()->attach($request->pt, [
             'perguruan_tinggi_id' => $request->pt,
+            'alamat' => $request->alamat,
+            'ttl' => $request->ttl,
+            'telp' => $request->telepon,
             'alamat' => $request->alamat,
             'nilai_akhir' => $request->nilai_akhir,
             'fakultas_id' => $request->fakultas,

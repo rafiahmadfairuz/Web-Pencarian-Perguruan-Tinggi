@@ -74,7 +74,7 @@
                         @enderror
                     </div>
 
-              
+
 
                 <!-- Fakultas dan Jurusan -->
                 <div class="mb-5">
@@ -99,13 +99,10 @@
                     <select name="jurusan" id="jurusan"
                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
                         <option value="" disabled selected>Pilih Jurusan</option>
-                        @foreach ($jurusan as $j)
-                        <option value="{{ $j->id }}">{{ $j->nama }}</option>
-                        @endforeach
                     </select>
                     @error('jurusan')
                         @include('Admin.layout.form.errorMessage')
-                        @enderror
+                    @enderror
                 </div>
 
                 <!-- Tombol Daftar dan Reset -->
@@ -122,4 +119,5 @@
             </form>
         </div>
     </div>
+
 </x-Member.app>

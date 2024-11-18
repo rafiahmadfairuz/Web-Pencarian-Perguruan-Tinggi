@@ -47,6 +47,29 @@
             }
         });
 
+
+        // const ctx = document.getElementById('myChart');
+        // const labels = {!! json_encode($labels)!!};
+        // const data = {!! json_encode($data)!!};
+        // new Chart(ctx, {
+        //   type: 'bar',
+        //   data: {
+        //     labels: labels,
+        //     datasets: [{
+        //       label: '# Data Penjualan',
+        //       data: data,
+        //       borderWidth: 1
+        //     }]
+        //   },
+        //   options: {
+        //     scales: {
+        //       y: {
+        //         beginAtZero: true
+        //       }
+        //     }
+        //   }
+        // });
+
         const dataBar = {
     labels: ['2021', '2022', '2023', '2024', '2025', '2026'],
     datasets: [{

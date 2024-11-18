@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
         Route::get('home', [MemberController::class, 'index'])->name('home');
         Route::get('profile/{id}', [MemberController::class, 'profile'])->name('profile');
         Route::get('form-daftar/{id}', [MemberController::class, 'formDaftar'])->name('daftar');
+        Route::get('jurusan/{id}', [MemberController::class, 'jurusan']);
         Route::post('daftar/{id}', [MemberController::class, 'storeDaftar'])->name('store.daftar');
     });
 
