@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-            <img src="{{ 'storage/'.$ptTerpilih->icon }}" >
+            <img src="{{ url('storage/' . $ptTerpilih->icon) }}" >
         </div>
     </div>
 

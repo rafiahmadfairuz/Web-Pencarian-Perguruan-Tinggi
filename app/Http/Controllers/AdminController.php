@@ -12,13 +12,13 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $penjualan = Pendaftar::all();
+        $pendaftar = Pendaftar::all();
         $labels = [];
         $data = [];
 
-        foreach ($penjualan as $p) {
-            $bulan = Carbon::parse($p['created_at'])->translatedFormat('l');
-            $labels[] = $bulan;
+        foreach ($pendaftar as $p) {
+            $tahun = Carbon::parse($p['created_at'])->translatedFormat('Y');
+            $labels[] = $tahun;
             $data[] = $p['total'];
         }
         return view('Admin.index')->with('labels', $labels)->with('data', $data);

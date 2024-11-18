@@ -1,5 +1,5 @@
 <x-Admin.app>
-    @section('title', 'Create Perguruan Tinggi ')
+    @section('title', 'Create Fakultas')
     <section class="py-4">
         @if(session()->has('gagal'))
            <p>{{ session()->get('gagal') }}</p>
@@ -8,10 +8,10 @@
         <div class="p-4 sm:ml-64 mt-1">
             <div class="bg-white  p-4 border-2 border-gray-200 border-dashed rounded-lg">
                 <div class="flex justify-between items-center py-2">
-                    <h2 class="mb-4 text-xl font-bold text-blue-600">Tambah Perguruan Tinggi </h2>
+                    <h2 class="mb-4 text-xl font-bold text-blue-600">Tambah Fakultas</h2>
                     @include('components.Admin.stepForm')
                 </div>
-                @include('Admin.layout.form.perguruanTinggiStep1')
+                @include('Admin.layout.form.fakultas')
             </div>
         </div>
     </section>

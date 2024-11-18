@@ -4,7 +4,7 @@
         @include('Admin.layout.successModal')
         <x-Admin.navbar></x-Admin.navbar>
         <div class="p-4 sm:ml-64">
-            <a href="{{ route('create.pt') }}">
+            <a href="{{ route('create.pt.1') }}">
                <x-Admin.button>Create perguruan Tinggi</x-Admin.button>
             </a>
             <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg shadow-lg bg-white">

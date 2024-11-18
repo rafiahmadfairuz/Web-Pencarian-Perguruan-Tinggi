@@ -2,7 +2,7 @@
     <div class="hero_section">
         <div class="isi-hero">
             <h1>Segera Daftar Ke Perguruan Tinggi Impianmu</h1>
-            <div class="filter">
+            <form class="filter">
             <div class="ff">
                 <div class="f">
                     <label for="akreditasi">Akreditasi</label>
@@ -14,8 +14,8 @@
                     </select>
                 </div>
                 <div class="f">
-                    <label for="">Jurusan</label>
-                    <input type="text" placeholder="Cari Sekarang">
+                    <label for="jurusan">Jurusan</label>
+                    <input type="text" name="jurusan" id="jurusan" placeholder="Cari Sekarang">
                 </div>
             </div>
 
@@ -28,9 +28,9 @@
                     <a href="" class="kategori">Sekolah Tinggi</a>
                     <a href="" class="kategori">Insitut</a>
                 </div>
-             <button class="tr">Terapkan</button>
+             <button class="tr" type="submit">Terapkan</button>
             </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

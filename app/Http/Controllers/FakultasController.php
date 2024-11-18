@@ -16,6 +16,10 @@ class FakultasController extends Controller
     {
 
     }
+    public function formFakultas()
+    {
+        return view('Admin.PerguruanTinggi.create2');
+    }
     public function storeFakultas(Request $request)
     {
         $request->validate([

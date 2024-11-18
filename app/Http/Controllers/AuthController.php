@@ -25,7 +25,7 @@ class AuthController extends Controller
         ]);
         if(Auth::attempt($validate)){
             $request->session()->regenerate();
-            return redirect()->route('home')->with('sukses', 'Berhasil Login');
+            return redirect()->route('home')->with('sukses', 'Berhasil Login. Terimakasih');
         }
         return redirect()->back()->with('gagal', 'Email / Password Salah');
     }

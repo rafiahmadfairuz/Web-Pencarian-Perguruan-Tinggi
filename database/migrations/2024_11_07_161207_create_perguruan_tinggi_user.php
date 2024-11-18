@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('ttl');
             $table->text('nilai_akhir');
             $table->enum('status', ['Pending', 0, 1])->default('Pending');
+            $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
     }

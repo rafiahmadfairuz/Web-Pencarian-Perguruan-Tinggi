@@ -12,6 +12,8 @@
 </head>
 <body class="bg-slate-100">
     {{ $slot }}
+    <script src="{{ url('Admin/main.js') }}"></script>
+
 </body>
 </html>
 

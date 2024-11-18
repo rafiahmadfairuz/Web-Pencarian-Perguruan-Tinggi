@@ -49,7 +49,7 @@ class User extends Authenticatable
     }
     public function pt(): BelongsToMany
     {
-        return $this->belongsToMany(PerguruanTinggi::class, 'perguruan_tinggi_user', 'user_id' , 'perguruan_tinggi_id')->withPivot('fakultas_id', 'jurusan_id', 'alamat', 'nilai_akhir', 'status');
+        return $this->belongsToMany(PerguruanTinggi::class, 'perguruan_tinggi_user', 'user_id' , 'perguruan_tinggi_id')->withPivot('id', 'fakultas_id', 'jurusan_id', 'alamat', 'nilai_akhir', 'status')->withTimestamps();
     }
 
     public function scopeFilter($query, $filters): void

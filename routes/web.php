@@ -22,39 +22,49 @@ Route::middleware('auth')->group(function () {
         Route::get('form-daftar/{id}', [MemberController::class, 'formDaftar'])->name('daftar');
         Route::get('jurusan/{id}', [MemberController::class, 'jurusan']);
         Route::post('daftar/{id}', [MemberController::class, 'storeDaftar'])->name('store.daftar');
+        Route::get('detail-pendaftaran/{id}', [MemberController::class, 'detailPendaftaran'])->name('detail.pendaftaran');
     });
 
     Route::prefix('admin')->group(function () {
         Route::get('index', [AdminController::class, 'index'])->name('admin.index');
         Route::get('view/member', [AdminController::class, 'viewMember'])->name('view.member');
         Route::get('view/mahasiswa', [AdminController::class, 'viewMahasiswa'])->name('view.mahasiswa');
-
         Route::get('view/perguruan-tinggi', [PerguruanTinggiController::class, 'perguruanTinggi'])->name('view.pt');
         Route::get('view/perguruan-tinggi/detail/{id}', [PerguruanTinggiController::class, 'detailPerguruanTinggi'])->name('admin.detail.pt');
-        Route::get('form/perguruan-tinggi', [PerguruanTinggiController::class, 'formPerguruanTinggi'])->name('create.pt');
-        Route::post('form/perguruan-tinggi', [PerguruanTinggiController::class, 'storePerguruanTinggi'])->name('store.pt');
+
+
+        Route::get('form/perguruan-tinggi/step-1', [PerguruanTinggiController::class, 'formPerguruanTinggiStep1'])->name('create.pt.1');
+        Route::post('form/perguruan-tinggi/step-1', [PerguruanTinggiController::class, 'storePerguruanTinggiStep1'])->name('store.pt.1');
+        Route::get('form/perguruan-tinggi/step-2', [PerguruanTinggiController::class, 'formPerguruanTinggiStep2'])->name('create.pt.2');
+        Route::post('form/perguruan-tinggi/step-2', [PerguruanTinggiController::class, 'storePerguruanTinggiStep2'])->name('store.pt.2');
+        Route::get('form/perguruan-tinggi/step-3', [PerguruanTinggiController::class, 'formPerguruanTinggiStep3'])->name('create.pt.3');
+        Route::post('form/perguruan-tinggi/step-3', [PerguruanTinggiController::class, 'storePerguruanTinggiStep3'])->name('store.pt.3');
+
+
+
+
         Route::get('form/update/perguruan-tinggi/{id}', [PerguruanTinggiController::class, 'formUpdatePerguruanTinggi'])->name('update.pt');
         Route::post('form/update/perguruan-tinggi/{id}', [PerguruanTinggiController::class, 'storeUpdatePerguruanTinggi'])->name('store.update.pt');
         Route::delete('form/delete/perguruan-tinggi/{id}', [PerguruanTinggiController::class, 'deletePerguruanTinggi'])->name('delete.pt');
 
-        Route::get('fakultas', [FakultasController::class, 'fakultas'])->name('view.fakultas');
-        Route::get('fakultas/detail/{id}', [FakultasController::class, 'detailFakultas'])->name('detail.fakultas');
-        Route::post('form/fakultas', [FakultasController::class, 'storeFakultas'])->name('store.fakultas');
+        // Route::get('fakultas', [FakultasController::class, 'fakultas'])->name('view.fakultas');
+        // Route::get('fakultas/detail/{id}', [FakultasController::class, 'detailFakultas'])->name('detail.fakultas');
+        // Route::post('form/fakultas', [FakultasController::class, 'formFakultas'])->name('create.fakultas');
         // Route::get('form/update/fakultas/{id}', [FakultasController::class, 'formUpdateFakultas'])->name('update.fakultas');
-        Route::post('form/update/fakultas/{id}', [FakultasController::class, 'storeUpdateFakultas'])->name('store.update.fakultas');
-        Route::delete('form/delete/fakultas/{id}', [FakultasController::class, 'deleteFakultas'])->name('delete.fakultas');
-        Route::get('fakultas/disabled/{idfakultas}', [FakultasController::class, 'disabled'])->name('disabled.fakultas');
-        Route::get('fakultas/enable/{idfakultas}', [FakultasController::class, 'enable'])->name('enable.fakultas');
+        // Route::post('form/update/fakultas/{id}', [FakultasController::class, 'storeUpdateFakultas'])->name('store.update.fakultas');
+        // Route::delete('form/delete/fakultas/{id}', [FakultasController::class, 'deleteFakultas'])->name('delete.fakultas');
+        // Route::get('fakultas/disabled/{idfakultas}', [FakultasController::class, 'disabled'])->name('disabled.fakultas');
+        // Route::get('fakultas/enable/{idfakultas}', [FakultasController::class, 'enable'])->name('enable.fakultas');
 
-        Route::get('jurusan', [JurusanController::class, 'jurusan'])->name('view.jurusan');
-        Route::get('jurusan/detail/{id}', [JurusanController::class, 'detailJurusan'])->name('detail.jurusan');
-        Route::get('form/jurusan', [JurusanController::class, 'formJurusan'])->name('create.jurusan');
-        Route::post('form/jurusan', [JurusanController::class, 'storeJurusan'])->name('store.jurusan');
+        // Route::get('jurusan', [JurusanController::class, 'jurusan'])->name('view.jurusan');
+        // Route::get('jurusan/detail/{id}', [JurusanController::class, 'detailJurusan'])->name('detail.jurusan');
+        // Route::get('form/jurusan', [JurusanController::class, 'formJurusan'])->name('create.jurusan');
+        // Route::post('form/jurusan', [JurusanController::class, 'storeJurusan'])->name('store.jurusan');
         // Route::get('form/update/jurusan/{id}', [JurusanController::class, 'formUpdateJurusan'])->name('update.jurusan');
-        Route::post('form/update/jurusan/{id}', [JurusanController::class, 'storeUpdateJurusan'])->name('store.update.jurusan');
-        Route::delete('form/update/jurusan/{id}', [JurusanController::class, 'deleteJurusan'])->name('delete.jurusan');
-        Route::get('jurusan/disabled/{idjurusan}', [JurusanController::class, 'disabled'])->name('disabled.jurusan');
-        Route::get('jurusan/enable/{idjurusan}', [JurusanController::class, 'enable'])->name('enable.jurusan');
+        // Route::post('form/update/jurusan/{id}', [JurusanController::class, 'storeUpdateJurusan'])->name('store.update.jurusan');
+        // Route::delete('form/update/jurusan/{id}', [JurusanController::class, 'deleteJurusan'])->name('delete.jurusan');
+        // Route::get('jurusan/disabled/{idjurusan}', [JurusanController::class, 'disabled'])->name('disabled.jurusan');
+        // Route::get('jurusan/enable/{idjurusan}', [JurusanController::class, 'enable'])->name('enable.jurusan');
 
         Route::get('member/aktifkan/{user}', [AdminController::class, 'mengaktifkan'])->name('member.aktif');
         Route::get('member/nonaktifkan/{user}', [AdminController::class, 'menonaktifkan'])->name('member.nonaktif');

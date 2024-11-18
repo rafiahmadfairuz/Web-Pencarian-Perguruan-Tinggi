@@ -10,6 +10,7 @@
             <span>Perguruan Tinggi Paling Direkomendasikan</span>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas consectetur voluptatum
                 natus eaque debitis porro.</p>
+            {{ $pt->count() }}
         </div>
         <div class="penataan">
             @forelse ($pt as $p)

@@ -14,18 +14,19 @@ class PerguruanTinggiController extends Controller
         return view('Admin.PerguruanTinggi.index', compact('perguruanTinggi'));
     }
 
-    public function formPerguruanTinggi()
-    {
-        return view('Admin.PerguruanTinggi.create');
-    }
-
     public function detailPerguruanTinggi($id)
     {
         $perguruanTinggiTerpilih = PerguruanTinggi::findOrFail($id);
         return view('Admin.PerguruanTinggi.detail', compact('perguruanTinggiTerpilih'));
     }
 
-    public function storePerguruanTinggi(Request $request)
+    public function formPerguruanTinggiStep1(Request $request)
+    {
+        $dataPT = $request->session()->get('dataPT');
+        return view('Admin.PerguruanTinggi.create', compact('dataPT'));
+    }
+
+    public function storePerguruanTinggiStep1(Request $request)
     {
        $validasi = $request->validate([
              'nama'=> 'required|min:5|max:30|unique:perguruan_tinggis,nama',
@@ -43,6 +44,9 @@ class PerguruanTinggiController extends Controller
              'banner' => 'required',
              'banner.*' => 'mimes:jpg,jpeg,png'
         ]);
+        if($request->waktu_pendaftaran_awal > $request->waktu_pendaftaran_berakhir) {
+            return redirect()->back()->withErrors(['waktu_pendaftaran_awal' => 'Waktu Pendaftaran Awal Harus Sebelum waktu Pendaftaran Berakhir']);
+        }
         if(substr($request->telp, 0, 1) != 0 ){
             return redirect()->back()->withErrors(['telp' => 'Nomor Telepon Harus Diawali dengan 0']);
         }
@@ -51,18 +55,46 @@ class PerguruanTinggiController extends Controller
         $validasi['icon'] = $simpan;
 
         if($request->hasFile('banner')) {
-            $jumlahGambar = count($request->file('banner'));
-
                 foreach($request->file('banner') as $image) {
                     $penyimpananGambar = $image->store('image', 'public');
                     $gambar[] = $penyimpananGambar;
                  }
-            
             $semuaGambar = implode(',', $gambar);
          }
         $validasi['banner'] = $semuaGambar;
-      PerguruanTinggi::create($validasi);
-     return redirect()->route('view.pt')->with('sukses', 'Berhasil Membuat Data Baru');
+
+        if(empty($request->session()->get('dataPT'))){
+            $dataPT = new PerguruanTinggi();
+            $dataPT->fill($validasi);
+            $request->session()->put('dataPT', $validasi);
+        } else {
+            $dataPT = $request->session()->get('dataPT');
+            $dataPT->fill($validasi);
+            $request->session()->put('dataPT', $validasi);
+        }
+        return redirect()->route('create.pt.2');
+    }
+
+    public function formPerguruanTinggiStep2(Request $request)
+    {
+        $dataPT = $request->session()->get('dataPT');
+        return view('Admin.PerguruanTinggi.create2', compact('dataPT'));
+    }
+
+    public function storePerguruanTinggiStep2(Request $request)
+    {
+
+    }
+
+    public function formPerguruanTinggiStep3(Request $request)
+    {
+        $perguruanTinggi = $request->session()->get('dataPT');
+        return view('Admin.PerguruanTinggi.create2', compact('dataPT'));
+    }
+
+    public function storePerguruanTinggiStep3(Request $request)
+    {
+
     }
 
     public function formUpdatePerguruanTinggi($id)
@@ -70,6 +102,7 @@ class PerguruanTinggiController extends Controller
         $perguruanTinggiTerpilih = PerguruanTinggi::findOrFail($id);
         return view('Admin.PerguruanTinggi.edit', compact('perguruanTinggiTerpilih'));
     }
+
 
     public function storeUpdatePerguruanTinggi(Request $request, $id)
     {
@@ -99,10 +132,6 @@ class PerguruanTinggiController extends Controller
        }
 
        if($request->hasFile('banner')){
-        $jumlahGambar = count($request->file('banner'));
-        if($jumlahGambar < 6 || $jumlahGambar > 6) {
-             return redirect()->back()->with('image', 'Image Harus Berjumlah 6');
-        } else {
             $hapusGambar = explode(',', $perguruanTinggiTerpilih->banner);
                 foreach($hapusGambar as $g) {
                     Storage::disk('public')->delete($g);
@@ -112,7 +141,6 @@ class PerguruanTinggiController extends Controller
                 $gambar[] = $penyimpananGambar;
              }
             $semuaGambar = implode(',', $gambar);
-        }
         $validasi['banner'] = $semuaGambar;
         }
 

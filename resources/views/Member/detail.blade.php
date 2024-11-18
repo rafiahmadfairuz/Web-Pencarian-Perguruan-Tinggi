@@ -1,4 +1,6 @@
 <x-Member.app>
+    @include('Admin.layout.successModal')
+    @section('title', $ptTerpilih->nama)
     <x-Member.navbar-detail></x-Member.navbar-detail>
     @include('components.Member.hero-detail')
     <div class="container-fluid flex justify-center">
@@ -27,11 +29,10 @@
         </div>
     </div>
 
-    <x-Member.fasilitas-detail></x-Member.fasilitas-detail>
-    <x-Member.fakta-detail></x-Member.fakta-detail>
-    <x-Member.kata-kata></x-Member.kata-kata>
-    <x-Member.biaya-detail></x-Member.biaya-detail>
-    <x-Member.pertanyaan-detail></x-Member.pertanyaan-detail>
+    @include('components.Member.fasilitas-detail')
+    @include('components.Member.pertanyaan-detail')
     @include('components.Member.gas-daftar')
     <x-Member.footer></x-Member.footer>
+    @include('Admin.layout.successModalScript')
+
 </x-Member.app>
