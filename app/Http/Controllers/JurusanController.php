@@ -2,52 +2,55 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fakultas;
 use App\Models\Jurusan;
 use Illuminate\Http\Request;
 
 class JurusanController extends Controller
 {
-    public function jurusan()
+    public function createJurusan($id)
     {
-        $jurusan = Jurusan::all();
-        return view('Admin.jurusan.index', compact('jurusan'));
+        return view('Admin.layout.form.jurusan', compact('id'));
     }
-    public function detailJurusan($id)
+    public function storeJurusan(Request $request, $id)
     {
-
-    }
-    public function storeJurusan(Request $request)
-    {
+        $fakultas = Fakultas::findOrFail($id);
         $request->validate([
           'nama' => 'required|min:4|max:50|unique:jurusans,nama'
         ]);
-        Jurusan::create([
+        $fakultas->jurusan()->create([
             'nama' => $request->nama,
         ]);
-        return redirect()->route('view.jurusan')->with('sukses', 'Sukses Membuat Jurusan Baru');
+        return redirect()->route('edit.fakultas', $id)->with('sukses', 'Sukses Membuat Jurusan Baru');
     }
 
-    public function storeUpdateJurusan(Request $request, $id)
+    public function editJurusan($id, $fakultas)
+    {
+        $jurusan = Jurusan::findOrFail($id);
+        return view('Admin.PerguruanTinggi.editJurusan', compact('jurusan','fakultas'));
+    }
+
+    public function storeUpdateJurusan(Request $request, $fakultas, $id)
     {
         $jurusanTerpilih = Jurusan::findOrFail($id);
          $request->validate([
-          'Nama' => 'required|min:4|max:50|unique:jurusans,nama,' . $jurusanTerpilih->id
+          'nama' => 'required|min:4|max:50|unique:jurusans,nama,' . $jurusanTerpilih->id
         ]);
         if($request->Nama == $jurusanTerpilih->nama){
-            session()->flash('error', 'Nama Sama, Tidak Terubah');
+            session()->flash('nama', 'Nama Sama, Tidak Terubah');
             return redirect()->back();
         }
         $jurusanTerpilih->update([
-            'nama' => $request->Nama,
+            'nama' => $request->nama,
         ]);
-        return redirect()->route('view.jurusan')->with('sukses', 'Sukses Update Jurusan');
+        return redirect()->route('edit.fakultas', $fakultas)->with('sukses', 'Sukses Update Jurusan');
     }
 
     public function deleteJurusan($id)
     {
         $jurusanTerpilih = Jurusan::findOrFail($id);
         $jurusanTerpilih->delete();
-        return redirect()->route('view.jurusan')->with('sukses', 'Jurusan Berhasil Dihapus');
+        return redirect()->route('edit.fakultas')->with('sukses', 'Jurusan Berhasil Dihapus');
     }
 
     public function disabled($id)

@@ -137,7 +137,7 @@
         <div class="w-full mb-4 mr-8">
             <label class=" mb-2 text-sm font-medium text-gray-900 flex" for="banner">Banner Perguruan Tinggi <p class="text-green-600 ms-2">(Tidak Perlu Diisi Bila Tidak Ingin Mengganti)</p></label>
             <input
-                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" id="banner" type="file" multiple name="banner[]">
+                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" id="banner" type="file"  name="banner">
                 @error('banner')
                 @include('Admin.layout.form.errorMessage')
             @enderror

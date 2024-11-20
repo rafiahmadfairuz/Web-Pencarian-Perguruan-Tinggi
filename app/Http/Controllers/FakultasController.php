@@ -7,44 +7,27 @@ use Illuminate\Http\Request;
 
 class FakultasController extends Controller
 {
-    public function fakultas()
-    {
-        $fakultas = Fakultas::all();
-        return view('Admin.Fakultas.index', compact('fakultas'));
-    }
-    public function detailFakultas($id)
-    {
 
-    }
-    public function formFakultas()
+    public function editFakultas($id)
     {
-        return view('Admin.PerguruanTinggi.create2');
-    }
-    public function storeFakultas(Request $request)
-    {
-        $request->validate([
-          'nama' => 'required|min:4|max:50|unique:fakultas,nama'
-        ]);
-        Fakultas::create([
-            'nama' => $request->nama,
-        ]);
-        return redirect()->route('view.fakultas')->with('sukses', 'Sukses Membuat Fakultas Baru');
+         $fakultasTerpilih = Fakultas::with('jurusan')->findOrFail($id);
+         return view('Admin.PerguruanTinggi.editFakultas', compact('fakultasTerpilih'));
     }
 
     public function storeUpdateFakultas(Request $request, $id)
     {
         $fakultasTerpilih = Fakultas::findOrFail($id);
         $request->validate([
-          'Nama' => 'required|min:4|max:50|unique:fakultas,nama,' . $fakultasTerpilih->id
+          'nama' => 'required|min:4|max:50|unique:fakultas,nama,' . $fakultasTerpilih->id
         ]);
-        if($request->Nama == $fakultasTerpilih->nama){
-            session()->flash('error', 'Nama Sama, Tidak Terubah');
+        if($request->nama == $fakultasTerpilih->nama){
+            session()->flash('nama', 'Nama Sama, Tidak Terubah');
             return redirect()->back();
         }
         $fakultasTerpilih->update([
-            'nama' => $request->Nama,
+            'nama' => $request->nama,
         ]);
-        return redirect()->route('view.fakultas')->with('sukses', 'Sukses Update Fakultas');
+        return redirect()->back()->with('sukses', 'Sukses Update Fakultas');
     }
 
     public function deleteFakultas($id)

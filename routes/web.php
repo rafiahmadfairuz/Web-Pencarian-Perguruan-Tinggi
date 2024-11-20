@@ -6,6 +6,7 @@ use App\Http\Controllers\FakultasController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PerguruanTinggiController;
+use App\Models\Fakultas;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,38 +38,31 @@ Route::middleware('auth')->group(function () {
         Route::post('form/perguruan-tinggi/step-1', [PerguruanTinggiController::class, 'storePerguruanTinggiStep1'])->name('store.pt.1');
         Route::get('form/perguruan-tinggi/step-2', [PerguruanTinggiController::class, 'formPerguruanTinggiStep2'])->name('create.pt.2');
         Route::post('form/perguruan-tinggi/step-2', [PerguruanTinggiController::class, 'storePerguruanTinggiStep2'])->name('store.pt.2');
-        Route::get('form/perguruan-tinggi/step-3', [PerguruanTinggiController::class, 'formPerguruanTinggiStep3'])->name('create.pt.3');
-        Route::post('form/perguruan-tinggi/step-3', [PerguruanTinggiController::class, 'storePerguruanTinggiStep3'])->name('store.pt.3');
+        Route::get('form/create/jurusan', [PerguruanTinggiController::class, 'formJurusan'])->name('create.jurusan');
+        Route::post('form/create/jurusan', [PerguruanTinggiController::class, 'storeJurusan'])->name('store.jurusan');
 
 
+        Route::get('edit/fakultas/{id}', [FakultasController::class, 'editFakultas'])->name('edit.fakultas');
+        Route::post('edit/fakultas/{id}', [FakultasController::class, 'storeUpdateFakultas'])->name('store.update.fakultas');
+        Route::get('disable/fakultas/{id}', [FakultasController::class, 'disable'])->name('disable.fakultas');
+        Route::get('enable/fakultas/{id}', [FakultasController::class, 'enable'])->name('enable.fakultas');
+        Route::delete('delete/fakultas/{id}', [FakultasController::class, 'delete'])->name('hapus.fakultas');
+
+        Route::get('create/jurusan/{id}', [JurusanController::class, 'createJurusan'])->name('create.jurusan');
+        Route::post('create/jurusan/{id}', [JurusanController::class, 'storeJurusan'])->name('store.jurusan');
+        Route::get('edit/jurusan/{fakultas}/{id}', [JurusanController::class, 'editJurusan'])->name('edit.jurusan');
+        Route::post('edit/jurusan/{fakultas}/{id}', [JurusanController::class, 'storeUpdateJurusan'])->name('store.update.jurusan');
+        Route::get('disable/jurusan/{id}', [JurusanController::class, 'disable'])->name('disable.jurusan');
+        Route::get('enable/jurusan/{id}', [JurusanController::class, 'enable'])->name('enable.jurusan');
+        Route::delete('delete/jurusan/{id}', [JurusanController::class, 'delete'])->name('hapus.jurusan');
 
 
         Route::get('form/update/perguruan-tinggi/{id}', [PerguruanTinggiController::class, 'formUpdatePerguruanTinggi'])->name('update.pt');
         Route::post('form/update/perguruan-tinggi/{id}', [PerguruanTinggiController::class, 'storeUpdatePerguruanTinggi'])->name('store.update.pt');
         Route::delete('form/delete/perguruan-tinggi/{id}', [PerguruanTinggiController::class, 'deletePerguruanTinggi'])->name('delete.pt');
 
-        // Route::get('fakultas', [FakultasController::class, 'fakultas'])->name('view.fakultas');
-        // Route::get('fakultas/detail/{id}', [FakultasController::class, 'detailFakultas'])->name('detail.fakultas');
-        // Route::post('form/fakultas', [FakultasController::class, 'formFakultas'])->name('create.fakultas');
-        // Route::get('form/update/fakultas/{id}', [FakultasController::class, 'formUpdateFakultas'])->name('update.fakultas');
-        // Route::post('form/update/fakultas/{id}', [FakultasController::class, 'storeUpdateFakultas'])->name('store.update.fakultas');
-        // Route::delete('form/delete/fakultas/{id}', [FakultasController::class, 'deleteFakultas'])->name('delete.fakultas');
-        // Route::get('fakultas/disabled/{idfakultas}', [FakultasController::class, 'disabled'])->name('disabled.fakultas');
-        // Route::get('fakultas/enable/{idfakultas}', [FakultasController::class, 'enable'])->name('enable.fakultas');
-
-        // Route::get('jurusan', [JurusanController::class, 'jurusan'])->name('view.jurusan');
-        // Route::get('jurusan/detail/{id}', [JurusanController::class, 'detailJurusan'])->name('detail.jurusan');
-        // Route::get('form/jurusan', [JurusanController::class, 'formJurusan'])->name('create.jurusan');
-        // Route::post('form/jurusan', [JurusanController::class, 'storeJurusan'])->name('store.jurusan');
-        // Route::get('form/update/jurusan/{id}', [JurusanController::class, 'formUpdateJurusan'])->name('update.jurusan');
-        // Route::post('form/update/jurusan/{id}', [JurusanController::class, 'storeUpdateJurusan'])->name('store.update.jurusan');
-        // Route::delete('form/update/jurusan/{id}', [JurusanController::class, 'deleteJurusan'])->name('delete.jurusan');
-        // Route::get('jurusan/disabled/{idjurusan}', [JurusanController::class, 'disabled'])->name('disabled.jurusan');
-        // Route::get('jurusan/enable/{idjurusan}', [JurusanController::class, 'enable'])->name('enable.jurusan');
-
         Route::get('member/aktifkan/{user}', [AdminController::class, 'mengaktifkan'])->name('member.aktif');
         Route::get('member/nonaktifkan/{user}', [AdminController::class, 'menonaktifkan'])->name('member.nonaktif');
-
         Route::delete('admin/logout', [AuthController::class, 'logout'])->name('logout');
     });
 

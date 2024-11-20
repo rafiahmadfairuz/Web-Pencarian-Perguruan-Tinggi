@@ -136,7 +136,7 @@
         <div class="w-full mb-4 mr-8">
             <label class="block mb-2 text-sm font-medium text-gray-900" for="banner">Banner Perguruan Tinggi</label>
             <input
-                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" id="banner" type="file" multiple name="banner[]">
+                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" id="banner" type="file"  name="banner">
                 @error('banner')
                 @include('Admin.layout.form.errorMessage')
             @enderror

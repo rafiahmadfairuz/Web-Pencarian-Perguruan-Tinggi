@@ -57,7 +57,7 @@
                                     <td scope="col" class="px-6 py-4">
                                         {{ $pt->alamat }}
                                     </td>
-                                    <td scope="col" class="px-6 py-3">
+                                    <td scope="col" class="px-6 py-3 flex gap-3">
                                         <a href="{{ route('update.pt', $pt->id) }}" type="button" class="text-sm
                                             font-medium text-red-500">Edit</a> |
                                         <a href="{{ route('admin.detail.pt', $pt->id) }} " type="button" class="text-sm
