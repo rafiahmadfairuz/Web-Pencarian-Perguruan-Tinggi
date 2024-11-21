@@ -90,22 +90,8 @@ class PerguruanTinggiController extends Controller
                'nama' => $fakultas,
             ]);
         }
-        return redirect()->route('create.pt.3');
+        return redirect()->route('admin.detail.pt', $pt->id);
     }
-
-    public function formJurusan(Request $request)
-    {
-        // $perguruanTinggi = $request->session()->get('dataPT');
-        return view('Admin.PerguruanTinggi.create3');
-    }
-
-    public function storeJurusan(Request $request)
-    {
-
-    }
-
-
-
 
     public function formUpdatePerguruanTinggi($id)
     {
@@ -130,7 +116,7 @@ class PerguruanTinggiController extends Controller
             'waktu_pendaftaran_berakhir' => 'required|date',
             'biaya' => 'numeric|required|min:1000',
             'icon' => 'mimes:jpg,png,jpeg',
-            'banner.*' => 'mimes:jpg,jpeg,png'
+            'banner' => 'mimes:jpg,jpeg,png'
        ]);
 
        if($request->hasFile('icon')) {
@@ -141,18 +127,13 @@ class PerguruanTinggiController extends Controller
         $validasi['icon'] = $simpan;
        }
 
-       if($request->hasFile('banner')){
-            $hapusGambar = explode(',', $perguruanTinggiTerpilih->banner);
-                foreach($hapusGambar as $g) {
-                    Storage::disk('public')->delete($g);
-                }
-                foreach($request->file('banner') as $image) {
-                $penyimpananGambar = $image->store('image', 'public');
-                $gambar[] = $penyimpananGambar;
-             }
-            $semuaGambar = implode(',', $gambar);
-        $validasi['banner'] = $semuaGambar;
-        }
+       if($request->hasFile('banner')) {
+        $gambarSaatIni = $perguruanTinggiTerpilih->banner;
+        Storage::disk('public')->delete($gambarSaatIni);
+        $banner = $request->file('banner');
+        $simpan = $banner->store('image', 'public');
+        $validasi['banner'] = $simpan;
+       }
 
         $perguruanTinggiTerpilih->update($validasi);
         return redirect()->route('view.pt')->with('sukses', 'Berhasil Edit Data Baru');

@@ -42,7 +42,7 @@
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $fk->nama }}
+                                    <span class=" {{ $fk->status == 0 ? "" : "bg-red-100" }} text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">{{  $fk->status == 0 ? "$fk->nama" : "$fk->nama (Nonaktif)" }}</span>
                                 </th>
                                 <td class="px-6 py-4">
                                     @forelse ($fk->jurusan as $jurusan)
@@ -56,13 +56,17 @@
                                         class="text-sm
                                         font-medium text-red-500">Edit</a>
                                     |
-                                    <a href="{{ route('disable.fakultas', $fk->id) }}" type="button"
+                                    <a href="{{ $fk->status == 0 ? route('disable.fk', $fk->id) : route('enable.fk', $fk->id) }}" type="button"
                                         class="text-sm
-                                        font-medium text-red-500">Disabled</a>
+                                        font-medium text-red-500">{{ $fk->status == 0 ? "Nonaktifkan" : "Aktifkan" }}</a>
                                     |
-                                    <a href="{{ route('hapus.fakultas', $fk->id) }}" type="button"
+                                    <form action="{{ route('hapus.fk', $fk->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
                                         class="text-sm
-                                        font-medium text-red-500">Hapus</a>
+                                        font-medium text-red-500 hover:cursor-pointer">Hapus</button>
+                                    </form>
                                 </td>
                             @empty
                                 <td colspan="2" class="text-center py-5">Belum Ada Fakultas Maupun Jurusan</td>

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('fakultas', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->foreignId('perguruan_tinggi_id')->constrained();
+            $table->foreignId('perguruan_tinggi_id')->constrained()->onDelete('cascade')->onDelete('cascade');
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

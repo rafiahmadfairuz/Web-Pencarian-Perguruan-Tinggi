@@ -16,8 +16,6 @@
             </div>
         </div>
 
-        Fakultas : {{ $fakultas }}
-        Jurusan : {{ $jurusan->nama }}
         <div class="p-4 bg-white">
             <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
                 <nav class=" border-gray-200">

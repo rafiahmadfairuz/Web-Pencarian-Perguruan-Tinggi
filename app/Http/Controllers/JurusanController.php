@@ -24,7 +24,7 @@ class JurusanController extends Controller
         return redirect()->route('edit.fakultas', $id)->with('sukses', 'Sukses Membuat Jurusan Baru');
     }
 
-    public function editJurusan($id, $fakultas)
+    public function editJurusan($fakultas, $id)
     {
         $jurusan = Jurusan::findOrFail($id);
         return view('Admin.PerguruanTinggi.editJurusan', compact('jurusan','fakultas'));
@@ -50,10 +50,10 @@ class JurusanController extends Controller
     {
         $jurusanTerpilih = Jurusan::findOrFail($id);
         $jurusanTerpilih->delete();
-        return redirect()->route('edit.fakultas')->with('sukses', 'Jurusan Berhasil Dihapus');
+        return redirect()->back()->with('sukses', 'Jurusan Berhasil Dihapus');
     }
 
-    public function disabled($id)
+    public function disable($id)
     {
         $jurusanTerpilih = Jurusan::findOrFail($id);
         $jurusanTerpilih->update([

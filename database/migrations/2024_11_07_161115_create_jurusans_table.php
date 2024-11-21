@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('jurusans', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->foreignId('fakultas_id')->constrained();
+            $table->foreignId('fakultas_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

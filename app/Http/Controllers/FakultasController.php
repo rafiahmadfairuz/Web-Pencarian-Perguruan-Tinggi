@@ -30,14 +30,14 @@ class FakultasController extends Controller
         return redirect()->back()->with('sukses', 'Sukses Update Fakultas');
     }
 
-    public function deleteFakultas($id)
+    public function delete($id)
     {
         $fakultasTerpilih = Fakultas::findOrFail($id);
         $fakultasTerpilih->delete();
-        return redirect()->route('view.fakultas')->with('sukses', 'Fakultas Berhasil Dihapus');
+        return redirect()->back()->with('sukses', 'Fakultas Berhasil Dihapus');
     }
 
-    public function disabled($id)
+    public function disable($id)
     {
         $fakultasTerpilih = Fakultas::findOrFail($id);
         $fakultasTerpilih->update([

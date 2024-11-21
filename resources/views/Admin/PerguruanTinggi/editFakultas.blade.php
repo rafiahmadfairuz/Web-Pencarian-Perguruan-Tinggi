@@ -59,29 +59,31 @@
 
                         @forelse ($fakultasTerpilih->jurusan as $jurusan)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-center">
-                                <td class="px-6 py-4">
-                                    {{ $jurusan->nama }}
+                                <td class="px-6 py-4 ">
+                                    <span class=" {{ $jurusan->status == 0 ? "" : "bg-red-100" }} text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">{{  $jurusan->status == 0 ? "$jurusan->nama" : "$jurusan->nama (Nonaktif)" }}</span>
                                 </td>
                                 <td class="px-6 py-4 flex gap-2 justify-center">
                                     <a href="{{ route('edit.jurusan', ['fakultas' => $fakultasTerpilih->id, 'id' => $jurusan->id]) }}" type="button"
                                         class="text-sm
                                         font-medium text-red-500">Edit</a>
                                     |
-                                    <a href="{{ route('disable.jurusan', $jurusan->id) }}" type="button"
+                                    <a href="{{ $jurusan->status == 0 ? route('disable.jurusan', $jurusan->id) : route('enable.jurusan', $jurusan->id) }}" type="button"
                                         class="text-sm
-                                        font-medium text-red-500">Disabled</a>
+                                        font-medium text-red-500">{{ $jurusan->status == 0 ? "Nonaktifkan" : "Aktifkan" }}</a>
                                     |
-                                    <a href="{{ route('hapus.jurusan', $jurusan->id) }}" type="button"
+                                    <form action="{{ route('hapus.jurusan', $jurusan->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
                                         class="text-sm
-                                        font-medium text-red-500">Hapus</a>
+                                        font-medium text-red-500 hover:cursor-pointer">Hapus</button>
+                                    </form>
+
                                 </td>
                             </tr>
                         @empty
                             Jurusan Tidak Tersedia
                         @endforelse
-
-
-
                     </tbody>
                 </table>
 
