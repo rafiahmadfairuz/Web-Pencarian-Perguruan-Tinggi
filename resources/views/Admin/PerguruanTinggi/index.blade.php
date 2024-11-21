@@ -10,7 +10,7 @@
             <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg shadow-lg bg-white">
                 <h2 class="mb-4 text-xl font-bold text-gray-900">List Perguruan Tinggi</h2>
                 <div class="relative overflow-x-auto">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                    <table class="w-full text-sm  rtl:text-right text-center text-gray-500">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
@@ -57,11 +57,11 @@
                                     <td scope="col" class="px-6 py-4">
                                         {{ $pt->alamat }}
                                     </td>
-                                    <td scope="col" class="px-6 py-3 flex gap-3">
-                                        <a href="{{ route('update.pt', $pt->id) }}" type="button" class="text-sm
-                                            font-medium text-red-500">Edit</a> |
-                                        <a href="{{ route('admin.detail.pt', $pt->id) }} " type="button" class="text-sm
-                                            font-medium text-red-500">Detail</a>
+                                    <td scope="col" class="px-6 py-3 flex justify-center gap-2 ">
+                                        <a href="{{ route('update.pt', $pt->id) }}" type="button" class="
+                                            font-medium border rounded p-2  hover:bg-green-500 hover:text-white duration-200 text-lg  text-green-500"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="{{ route('admin.detail.pt', $pt->id) }} " type="button" class="
+                                            font-medium border hover:bg-blue-500 hover:text-white duration-200 rounded p-2  text-lg  text-blue-500"><i class="fa-solid fa-eye"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

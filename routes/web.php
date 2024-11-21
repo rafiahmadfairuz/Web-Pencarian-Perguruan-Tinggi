@@ -42,16 +42,17 @@ Route::middleware('auth')->group(function () {
         Route::post('form/create/jurusan', [PerguruanTinggiController::class, 'storeJurusan'])->name('store.jurusan');
 
 
-        Route::get('edit/fakultas/{id}', [FakultasController::class, 'editFakultas'])->name('edit.fakultas');
+        Route::get('edit/fakultas/{pt}/{id}', [FakultasController::class, 'editFakultas'])->name('edit.fakultas');
         Route::post('edit/fakultas/{id}', [FakultasController::class, 'storeUpdateFakultas'])->name('store.update.fakultas');
         Route::get('disable/fakultas/{id}', [FakultasController::class, 'disable'])->name('disable.fk');
         Route::get('enable/fakultas/{id}', [FakultasController::class, 'enable'])->name('enable.fk');
         Route::delete('delete/fakultas/{id}', [FakultasController::class, 'delete'])->name('hapus.fk');
 
-        Route::get('create/jurusan/{id}', [JurusanController::class, 'createJurusan'])->name('create.jurusan');
-        Route::post('create/jurusan/{id}', [JurusanController::class, 'storeJurusan'])->name('store.jurusan');
-        Route::get('edit/jurusan/{fakultas}/{id}', [JurusanController::class, 'editJurusan'])->name('edit.jurusan');
-        Route::post('edit/jurusan/{fakultas}/{id}', [JurusanController::class, 'storeUpdateJurusan'])->name('store.update.jurusan');
+
+        Route::get('create/jurusan/{pt}/{id}', [JurusanController::class, 'createJurusan'])->name('create.jurusan');
+        Route::post('create/jurusan/{pt}/{id}', [JurusanController::class, 'storeJurusan'])->name('store.jurusan');
+        Route::get('edit/jurusan/{pt}/{fakultas}/{id}', [JurusanController::class, 'editJurusan'])->name('edit.jurusan');
+        Route::post('edit/jurusan/{pt}/{fakultas}/{id}', [JurusanController::class, 'storeUpdateJurusan'])->name('store.update.jurusan');
         Route::get('disable/jurusan/{id}', [JurusanController::class, 'disable'])->name('disable.jurusan');
         Route::get('enable/jurusan/{id}', [JurusanController::class, 'enable'])->name('enable.jurusan');
         Route::delete('delete/jurusan/{id}', [JurusanController::class, 'deleteJurusan'])->name('hapus.jurusan');
@@ -65,7 +66,6 @@ Route::middleware('auth')->group(function () {
         Route::get('member/nonaktifkan/{user}', [AdminController::class, 'menonaktifkan'])->name('member.nonaktif');
         Route::delete('admin/logout', [AuthController::class, 'logout'])->name('logout');
     });
-
 });
 
 Route::middleware('guest')->group(function () {
@@ -74,5 +74,3 @@ Route::middleware('guest')->group(function () {
     Route::get('register', [AuthController::class, 'register'])->name('register');
     Route::post('register', [AuthController::class, 'storeRegister'])->name('store.register');
 });
-
-

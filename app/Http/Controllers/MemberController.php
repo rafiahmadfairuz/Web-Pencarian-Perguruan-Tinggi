@@ -110,8 +110,8 @@ class MemberController extends Controller
 
     public function detailPendaftaran($id)
     {
-        $dataPendaftar = Pendaftar::findOrFail($id);
-        return $dataPendaftar;
+        $dataPendaftar = Pendaftar::with(['perguruanTinggi', 'jurusan', 'user', 'fakultas'])->findOrFail($id);
+        return view('Member.detailPendaftaran', compact('dataPendaftar'));
     }
 
 }

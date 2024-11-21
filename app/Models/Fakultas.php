@@ -21,4 +21,8 @@ class Fakultas extends Model
     {
         return $this->hasMany(Jurusan::class);
     }
+    public function pendaftar(): HasMany
+    {
+        return $this->hasMany(Pendaftar::class);
+    }
 }

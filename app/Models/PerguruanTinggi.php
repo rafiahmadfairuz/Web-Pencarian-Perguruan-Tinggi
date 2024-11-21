@@ -31,6 +31,10 @@ class PerguruanTinggi extends Model
     {
         return $this->hasOne(Admin::class);
     }
+    public function pendaftar(): HasMany
+    {
+        return $this->hasMany(Pendaftar::class);
+    }
 
     public function scopeCari($query, $filters): void
     {

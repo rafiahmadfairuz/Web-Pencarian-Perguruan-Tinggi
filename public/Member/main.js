@@ -1,16 +1,19 @@
 window.addEventListener('scroll', function() {
     let header = document.querySelector('header');
     let logo = document.querySelector('.logo');
+    let notif = document.querySelector('.notif');
     if (window.scrollY > 50) {
         header.style.backgroundColor = "white";
         header.classList.add('shadow-lg');
         logo.style.color = "black"
+        notif.style.color = "black"
 
 
     } else {
         header.style.backgroundColor = "";
         header.classList.remove('shadow-lg');
         logo.style.color = "white"
+        notif.style.color = "white"
     }
 });
 document.getElementById('fakultas').addEventListener('change', function () {

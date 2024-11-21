@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 class FakultasController extends Controller
 {
 
-    public function editFakultas($id)
+    public function editFakultas($pt, $id)
     {
          $fakultasTerpilih = Fakultas::with('jurusan')->findOrFail($id);
-         return view('Admin.PerguruanTinggi.editFakultas', compact('fakultasTerpilih'));
+         return view('Admin.PerguruanTinggi.editFakultas', compact('fakultasTerpilih', 'pt'));
     }
 
     public function storeUpdateFakultas(Request $request, $id)
