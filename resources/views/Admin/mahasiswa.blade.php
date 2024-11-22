@@ -4,8 +4,6 @@
       <x-Admin.navbar></x-Admin.navbar>
         @include('Admin.layout.successModal')
 
-
-
         <div class="container-fluid flex justify-center p-4 sm:ml-64 gap-5">
             <form class="w-1/2">
                 <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -22,7 +20,7 @@
 
             <form class="flex w-1/2 gap-2 items-center">
                 <div class="flex items-center w-1/2 ps-4 border border-gray-200 rounded dark:border-gray-700">
-                    <input id="bordered-radio-1" name="status" value="0"  type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="bordered-radio-1" name="status" value="nol"  type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <label for="bordered-radio-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ditolak</label>
                 </div>
                 <div class="flex items-center w-1/2 ps-4 border border-gray-200 rounded dark:border-gray-700">
@@ -30,8 +28,8 @@
                     <label for="bordered-radio-2" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Diterima</label>
                 </div>
                 <div class="flex items-center w-1/2 ps-4 border border-gray-200 rounded dark:border-gray-700">
-                    <input  id="bordered-radio-2" name="status" value="Pending" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="bordered-radio-2" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pending</label>
+                    <input  id="bordered-radio-3" name="status" value="Pending" type="radio"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="bordered-radio-3" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pending</label>
                 </div>
                 <button type="submit" class="h-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Terapkan</button>
             </form>
@@ -88,10 +86,10 @@
                                         {{ $maha->jurusan->nama }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <span class="{{ $maha->status == 0 ? "bg-red-500" : ( $maha->status == 1 ? "bg-blue-500" : "bg-green-500") }} text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded "> {{ $maha->status == 0 ? "Ditolak" : ( $maha->status == 1 ? "Diterima" : "Pending" ) }}</span>
+                                        <span class="{{ $maha->status == 0 ? "bg-red-500 text-red-800" : ( $maha->status == 1 ? "bg-blue-500 text-white" : "bg-green-500 text-white") }}  text-xs font-medium me-2 px-2.5 py-0.5 rounded "> {{ $maha->status == 0 ? "Ditolak" : ( $maha->status == 1 ? "Diterima" : "Pending" ) }}</span>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a href="{{ route('detail.pendaftaran', $maha->id) }}" class=" text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded ">Detail</a>
+                                        <a href="{{ route('detail.pendaftar', $maha->id) }}" class=" text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded ">Detail</a>
                                     </td>
                                 @empty
                                    <td colspan="6" class="text-center py-5">Data Tidak Ditemukan</td>

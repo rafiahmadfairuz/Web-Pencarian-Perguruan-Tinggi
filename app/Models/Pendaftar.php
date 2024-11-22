@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Pendaftar extends Model
 {
     protected $table = 'perguruan_tinggi_user';
-
+    protected $guarded = ['id'];
     public function perguruanTinggi(): BelongsTo
     {
         return $this->belongsTo(PerguruanTinggi::class);
@@ -35,8 +35,11 @@ class Pendaftar extends Model
     }
     public function scopeStatus($query, $filters): void
     {
+        if($filters == 'nol'){
+            $filters = "0";
+        }
         $query->when(
-           $filters ?? false,
+            $filters !== null,
            fn ($query) =>
            $query->where('status', $filters)
         );

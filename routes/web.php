@@ -32,6 +32,9 @@ Route::middleware('auth')->group(function () {
         Route::get('view/mahasiswa', [AdminController::class, 'viewMahasiswa'])->name('view.mahasiswa');
         Route::get('view/perguruan-tinggi', [PerguruanTinggiController::class, 'perguruanTinggi'])->name('view.pt');
         Route::get('view/perguruan-tinggi/detail/{id}', [PerguruanTinggiController::class, 'detailPerguruanTinggi'])->name('admin.detail.pt');
+        Route::get('view/detail/pendaftar/{id}', [AdminController::class, 'detailPendaftar'])->name('detail.pendaftar');
+        Route::post('penolakan/mahasiswa/{id}', [AdminController::class, 'ditolak'])->name('ditolak');
+        Route::get('penerimaan/mahasiswa/{id}', [AdminController::class, 'diterima'])->name('diterima');
 
 
         Route::get('form/perguruan-tinggi/step-1', [PerguruanTinggiController::class, 'formPerguruanTinggiStep1'])->name('create.pt.1');
