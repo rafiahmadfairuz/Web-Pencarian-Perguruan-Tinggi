@@ -25,4 +25,20 @@ class Pendaftar extends Model
     {
         return $this->belongsTo(Fakultas::class);
     }
+    public function scopeFilter($query, $filters): void
+    {
+         $query->when(
+            $filters ?? false,
+            fn ($query, $search) =>
+            $query->where('name' ,'like', '%' . $search . '%' )
+         );
+    }
+    public function scopeStatus($query, $filters): void
+    {
+        $query->when(
+           $filters ?? false,
+           fn ($query) =>
+           $query->where('status', $filters)
+        );
+    }
 }

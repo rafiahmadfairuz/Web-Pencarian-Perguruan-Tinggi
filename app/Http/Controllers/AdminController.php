@@ -36,7 +36,13 @@ class AdminController extends Controller
     }
     public function viewMahasiswa()
     {
-        $mahasiswa = User::with(['pt'])->get();
+        if(request('search')){
+             $mahasiswa = Pendaftar::filter(request('search'))->with(['perguruanTinggi', 'jurusan', 'fakultas', 'user'])->get();
+        } elseif (request('status')) {
+             $mahasiswa = Pendaftar::status(request('status'))->with(['perguruanTinggi', 'jurusan', 'fakultas', 'user'])->get();
+        } else {
+             $mahasiswa = Pendaftar::with(['perguruanTinggi', 'jurusan', 'fakultas', 'user'])->get();
+        }
         // echo '<table border="1" cellpadding="5" cellspacing="0">';
         // echo '<tr><th>Mahasiswa</th><th>Universitas</th><th>Juruasn ID</th></tr>'; // Menambahkan header untuk kolom "Juruasn ID"
 
@@ -47,11 +53,7 @@ class AdminController extends Controller
         //     }
         //     echo "</td></tr>";
         // }
-
         // echo '</table>';
-
-
-
         return view('Admin.mahasiswa', compact('mahasiswa'));
     }
     public function mengaktifkan(User $user)
