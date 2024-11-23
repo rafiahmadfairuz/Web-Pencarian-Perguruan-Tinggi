@@ -62,7 +62,7 @@
 
 
                     <a href="{{ route('profile', Auth::user()->id) }}">
-                        <img src="{{ url('storage/image/kosong.jpg') }}"
+                        <img src="{{ url('storage/image/no.jpg') }}"
                             class="border-2 border-black image_profile rounded-full" alt="Profile">
                     </a>
 

@@ -21,13 +21,29 @@
 
             <div class="filter-terapkan">
                 <div class="filter-kategori">
-                    <p>Filter : </p>
-                    <a href="" class="kategori">Politeknik</a>
-                    <a href="" class="kategori">Swasta</a>
-                    <a href="" class="kategori">Negri</a>
-                    <a href="" class="kategori">Sekolah Tinggi</a>
-                    <a href="" class="kategori">Insitut</a>
+                    <p>Filter Kategori:</p>
+                    <label>
+                        <input type="radio" name="kategori" value="Politeknik" {{ request('kategori') == 'Politeknik' ? 'checked' : '' }}>
+                        Politeknik
+                    </label>
+                    <label>
+                        <input type="radio" name="kategori" value="Swasta" {{ request('kategori') == 'Swasta' ? 'checked' : '' }}>
+                        Swasta
+                    </label>
+                    <label>
+                        <input type="radio" name="kategori" value="Negeri" {{ request('kategori') == 'Negeri' ? 'checked' : '' }}>
+                        Negeri
+                    </label>
+                    <label>
+                        <input type="radio" name="kategori" value="Sekolah Tinggi" {{ request('kategori') == 'Sekolah Tinggi' ? 'checked' : '' }}>
+                        Sekolah Tinggi
+                    </label>
+                    <label>
+                        <input type="radio" name="kategori" value="Institut" {{ request('kategori') == 'Institut' ? 'checked' : '' }}>
+                        Institut
+                    </label>
                 </div>
+            
              <button class="tr" type="submit">Terapkan</button>
             </div>
             </form>

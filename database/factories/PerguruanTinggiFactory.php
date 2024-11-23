@@ -28,7 +28,7 @@ class PerguruanTinggiFactory extends Factory
             'kategori' => $this->faker->randomElement(['Politeknik', 'Swasta', 'Negri', 'Sekolah Tinggi', 'Institut']),
             'akreditasi' => $this->faker->randomElement(['A', 'B', 'C']),
             'waktu_pendaftaran_awal' => "2024-11-01",
-            'waktu_pendaftaran_berakhir' => "2024-11-20",
+            'waktu_pendaftaran_berakhir' => "2024-12-20",
             'icon' => 'image/ub.png',
             'banner' => 'maha.jpg',
         ];

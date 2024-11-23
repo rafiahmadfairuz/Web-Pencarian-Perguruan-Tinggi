@@ -86,7 +86,7 @@
                                         {{ $maha->jurusan->nama }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <span class="{{ $maha->status == 0 ? "bg-red-500 text-red-800" : ( $maha->status == 1 ? "bg-blue-500 text-white" : "bg-green-500 text-white") }}  text-xs font-medium me-2 px-2.5 py-0.5 rounded "> {{ $maha->status == 0 ? "Ditolak" : ( $maha->status == 1 ? "Diterima" : "Pending" ) }}</span>
+                                        <span class="{{ $maha->status == 0 ? "bg-red-500 text-white" : ( $maha->status == 1 ? "bg-blue-500 text-white" : "bg-green-500 text-white") }}  text-xs font-medium me-2 px-2.5 py-0.5 rounded "> {{ $maha->status == 0 ? "Ditolak" : ( $maha->status == 1 ? "Diterima" : "Pending" ) }}</span>
                                     </td>
                                     <td class="px-6 py-4">
                                         <a href="{{ route('detail.pendaftar', $maha->id) }}" class=" text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded ">Detail</a>

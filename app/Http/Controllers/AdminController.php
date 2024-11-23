@@ -12,16 +12,24 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $pendaftar = Pendaftar::all();
-        $labels = [];
-        $data = [];
+    $diterima = Pendaftar::where('status', '1')->count();  
+    $ditolak = Pendaftar::where('status', '0')->count();   
 
-        foreach ($pendaftar as $p) {
-            $tahun = Carbon::parse($p['created_at'])->translatedFormat('Y');
-            $labels[] = $tahun;
-            $data[] = $p['total'];
-        }
-        return view('Admin.index')->with('labels', $labels)->with('data', $data);
+    $data = Pendaftar::selectRaw('COUNT(*) as count, MONTH(created_at) as month, YEAR(created_at) as year')
+                     ->groupBy('month', 'year')
+                     ->orderBy('year', 'asc')
+                     ->orderBy('month', 'asc')
+                     ->get();
+
+    $labels = [];
+    $chartData = [];
+
+    foreach ($data as $item) {
+        $labels[] = Carbon::createFromFormat('Y-m', $item->year . '-' . $item->month)->format('M Y');
+        $chartData[] = $item->count;
+    }
+
+    return view('Admin.index', compact('diterima', 'ditolak', 'labels', 'chartData'));
     }
     public function viewMember()
     {
@@ -84,7 +92,7 @@ class AdminController extends Controller
     {
         $dataPendaftar = Pendaftar::with(['user'])->findOrFail($id);
         $dataPendaftar->update([
-            'status' => 1,
+            'status' => '1',
             'deskripsi' => 'Anda Diterima, Silahkan Melakukan Pembayaran Ke Lokasi Perguruan Tinggi Untuk Melanjutkan Administrasi'
         ]);
         return redirect()->route('view.mahasiswa')->with('sukses', 'Sukses Menerima Mahasiswa ' . $dataPendaftar->user->name);
@@ -96,7 +104,7 @@ class AdminController extends Controller
         ]);
         $dataPendaftar = Pendaftar::with(['user'])->findOrFail($id);
         $dataPendaftar->update([
-            'status' => 0,
+            'status' => '0',
             'deskripsi' => $request->deskripsi,
         ]);
         return redirect()->route('view.mahasiswa')->with('sukses', 'Sukses Menolak Mahasiswa ' . $dataPendaftar->user->name);

@@ -100,6 +100,8 @@
                             </div>
 
                             <!-- Button Tolak dan Terima -->
+                            @if ($dataPendaftar->status != 0 && $dataPendaftar->status != 1)
+                                
                             <div class="flex space-x-4">
                                 <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="flex-1 border-2 border-red-600 hover:bg-red-600 hover:text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform  focus:outline-none">
                                     Tolak
@@ -108,6 +110,7 @@
                                     Terima
                                 </a>
                             </div>
+                            @endif
                         </main>
                     </div>
                 </div>
@@ -131,7 +134,8 @@
                       <span class="sr-only">Close modal</span>
                   </button>
               </div>
-              <form class="p-4 md:p-5" action="{{ route('ditolak', $dataPendaftar->id) }}">
+              <form class="p-4 md:p-5" method="POST" action="{{ route('ditolak', $dataPendaftar->id) }}">
+                @csrf
                   <div class="grid gap-4 mb-4 grid-cols-2">
                       <div class="col-span-2">
                           <textarea id="description" name="deskripsi" style="height: 300px; max-height:400px;" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Berikan Deskripsi Penolakan Mahasiswa Disini"></textarea>

@@ -16,8 +16,8 @@ class MemberController extends Controller
     {
         if (request('cari')) {
             $pt = PerguruanTinggi::cari(request('cari'))->paginate(20);
-        } elseif (request('jurusan')) {
-            $pt = PerguruanTinggi::filter(request(['jurusan','akreditasi','kategori']))->paginate(20);
+        }   elseif (request('jurusan') || request('akreditasi') || request('kategori')) {
+            $pt = PerguruanTinggi::filter(request(['jurusan', 'akreditasi', 'kategori']))->paginate(20);
         } else {
             $pt = PerguruanTinggi::latest()->paginate(20);
         }

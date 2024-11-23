@@ -24,70 +24,66 @@
     </section>
 
     <script>
-        const ctx = document.getElementById('pie');
-        const ctz = document.getElementById('batang');
+    const ctxPie = document.getElementById('pie');
+    const diterima = {!! json_encode($diterima) !!};  
+    const ditolak = {!! json_encode($ditolak) !!};    
 
-        const dataPie = {
-            labels: ['Mahasiswa Ditolak', 'Mahasiswa Diterima'],
+    const dataPie = {
+        labels: ['Mahasiswa Ditolak', 'Mahasiswa Diterima'],
+        datasets: [{
+            label: 'Jumlah Mahasiswa Ditolak Dan Diterima',
+            data: [ditolak, diterima],  
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    new Chart(ctxPie, {
+        type: 'pie',
+        data: dataPie,
+        options: {
+            responsive: true
+        }
+    });
+
+    const ctxBar = document.getElementById('batang');
+    const labels = {!! json_encode($labels) !!};  
+    const data = {!! json_encode($chartData) !!};  
+
+    new Chart(ctxBar, {
+        type: 'bar',
+        data: {
+            labels: labels,  
             datasets: [{
-                label: 'Jumlah Mahasiswa Ditolak Dan Diterima',
-                data: [300, 700],
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                ],
-                hoverOffset: 4
+                label: '# Data Mahasiswa Yang Mendaftar',
+                data: data,  
+                borderWidth: 1,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',  
+                borderColor: 'rgba(54, 162, 235, 1)',  
+                hoverBackgroundColor: 'rgba(54, 162, 235, 0.5)',  
+                hoverBorderColor: 'rgba(54, 162, 235, 1)',  
             }]
-        };
-        new Chart(ctx, {
-            type: 'pie',
-            data: dataPie,
-            options: {
-                responsive: true
-            }
-        });
-
-
-        const labels = {!! json_encode($labels) !!};
-        const data = {!! json_encode($data) !!};
-        new Chart(ctz, {
-          type: 'bar',
-          data: {
-            labels: labels,
-            datasets: [{
-              label: '# Data Mahasiswa Yang Mendaftar',
-              data: data,
-              borderWidth: 1
-            }]
-          },
-          options: {
+        },
+        options: {
+            responsive: true,
             scales: {
-              y: {
-                beginAtZero: true
-              }
+                y: {
+                    beginAtZero: true,  
+                    title: {
+                        display: true,
+                        text: 'Jumlah Pendaftar'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top',  
+                }
             }
-          }
-        });
-
-        // const dataBar = {
-        //     labels: ['2021', '2022', '2023', '2024', '2025', '2026'],
-        //     datasets: [{
-        //         label: 'Total Mahasiswa Yang Mendaftar',
-        //         data: [520, 250, 380, 100, 460, 230],
-        //         borderWidth: 1
-        //     }]
-        // };
-        // new Chart(ctz, {
-        //     type: 'bar',
-        //     data: dataBar,
-        //     options: {
-        //         responsive: true,
-        //         scales: {
-        //             y: {
-        //                 beginAtZero: true
-        //             }
-        //         }
-        //     }
-        // });
+        }
+    });
     </script>
 </x-Admin.app>

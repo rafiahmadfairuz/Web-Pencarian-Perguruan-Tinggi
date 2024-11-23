@@ -25,7 +25,7 @@ class PerguruanTinggi extends Model
     }
     public function jurusan(): HasMany
     {
-        return $this->hasMany(Fakultas::class);
+        return $this->hasMany(Fakultas::class, 'perguruan_tinggi_id') ;
     }
     public function admin(): HasOne
     {
@@ -44,32 +44,34 @@ class PerguruanTinggi extends Model
             $query->where('nama' ,'like', '%' . $search . '%' )
          );
     }
-
-    public function scopeFilter(Builder $query ,array $filters): void
+    public function scopeFilter(Builder $query, array $filters)
     {
-        $query->when(
-            $filters['jurusan'] ?? false,
-            fn ($query, $search) =>
-            $query->where('jurusan' ,'like', '%' . $search . '%' )
-         );
-         $query->when(
-            $filters['akreditasi'] ?? false,
-            fn ($query, $akreditasi) =>
-            $query->where('akreditasi' , $akreditasi )
-         );
-         $query->when(
-            $filters['kategori'] ?? false,
-            fn ($query, $kategori) =>
-            $query->where('kategori' , $kategori)
-         );
+        if (isset($filters['akreditasi']) && $filters['akreditasi']) {
+            $query->where('akreditasi', $filters['akreditasi']);
+        }
+
+        if (isset($filters['jurusan']) && $filters['jurusan']) {
+            $query->whereHas('jurusan', function ($query) use ($filters) {
+                $query->where('nama', 'like', '%' . $filters['jurusan'] . '%');
+            });
+        }
+
+        if (isset($filters['kategori']) && $filters['kategori']) {
+            $query->where('kategori', $filters['kategori']);
+        }
+
+        return $query;
     }
 
-    public function scopeStatus($query, $filters): void
-    {
-        $query->when(
-           $filters ?? false,
-           fn ($query) =>
-           $query->where('status', $filters)
-        );
-    }
+
+
+
+    // public function scopeStatus($query, $filters): void
+    // {
+    //     $query->when(
+    //        $filters ?? false,
+    //        fn ($query) =>
+    //        $query->where('status', $filters)
+    //     );
+    // }
 }

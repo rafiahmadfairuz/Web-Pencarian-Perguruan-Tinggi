@@ -15,7 +15,7 @@ class Jurusan extends Model
     protected $guarded = ['id'];
     public function perguruanTinggi(): BelongsTo
     {
-        return $this->belongsTo(PerguruanTinggi::class);
+        return $this->belongsTo(PerguruanTinggi::class, 'perguruan_tinggi_id');
     }
     public function jurusan(): BelongsTo
     {
