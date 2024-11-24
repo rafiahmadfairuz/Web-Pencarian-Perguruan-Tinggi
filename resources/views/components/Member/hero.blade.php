@@ -43,7 +43,7 @@
                         Institut
                     </label>
                 </div>
-            
+
              <button class="tr" type="submit">Terapkan</button>
             </div>
             </form>

@@ -17,7 +17,7 @@
               <div class="credit-card-info--form">
                 <div class="input_container">
                     <label for="nama" class="input_label">Nama Lengkap</label>
-                    <input id="nama" class="input_field" type="text" name="nama" value="{{old('nama')}}" title="Inpit title" placeholder="Masukkan Namamu">
+                    <input id="nama" class="input_field" type="text" name="nama" value="{{old('nama')}}" title="Inpit title" placeholder="Nama">
                     @error('nama')
                        <p class="eror">{{$message}}</p>
                     @enderror

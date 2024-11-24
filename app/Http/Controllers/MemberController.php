@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Fakultas;
 use App\Models\Jurusan;
+use App\Models\Fakultas;
 use App\Models\Pendaftar;
 use Illuminate\Http\Request;
 use App\Models\PerguruanTinggi;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class MemberController extends Controller
 {
@@ -37,13 +38,11 @@ class MemberController extends Controller
     public function profile($id)
     {
         $userPT = User::with(['pt.fakultas', 'pt.jurusan'])->findOrFail($id);
-        //   return $userPT->pt->first();
-        //   foreach($data->fakultas as $n){
-        //     return $n->nama;
-        //   };
-        //  foreach($userPT->pt as $pt) {
-        //  $fakultas = Fakultas::findOrFail($pt->pivot->fakultas_id);
-        //  }
+        $cek = Gate::inspect('view', $userPT);
+        if(!$cek->allowed()){
+            session()->flash('message', 'Anda Bukanlah Pemilik Akun ' . $userPT->email);
+            abort(403);
+        }
         return view('Member.profile', compact('userPT'));
     }
     public function formDaftar($id)
@@ -108,8 +107,11 @@ class MemberController extends Controller
 
     }
 
-    public function detailPendaftaran($id)
+    public function detailPendaftaran($id, $notif)
     {
+
+        $notification = Auth::user()->notifications->findOrFail($notif);
+        $notification->markAsRead();
         $dataPendaftar = Pendaftar::with(['perguruanTinggi', 'jurusan', 'user', 'fakultas'])->findOrFail($id);
         return view('Member.detailPendaftaran', compact('dataPendaftar'));
     }

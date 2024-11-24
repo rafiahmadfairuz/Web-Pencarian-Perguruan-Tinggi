@@ -12,7 +12,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -62,8 +63,10 @@ class User extends Authenticatable
          $query->when(
             $filters ?? false,
             fn ($query, $search) =>
-            $query->where('name' ,'like', '%' . $search . '%' )
-         );
+            filter_var($search, FILTER_VALIDATE_EMAIL)
+            ? $query->where('email' ,'like', '%' . $search . '%' )
+            : $query->where('name' ,'like', '%' . $search . '%' )
+        );
     }
     public function scopeStatus($query, $filters): void
     {

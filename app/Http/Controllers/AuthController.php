@@ -25,6 +25,9 @@ class AuthController extends Controller
         ]);
         if(Auth::attempt($validate)){
             $request->session()->regenerate();
+            if(Auth::user()->roles == 'pengelola'){
+            return redirect()->route('admin.index')->with('sukses', 'Berhasil Login. Terimakasih');
+            }
             return redirect()->route('home')->with('sukses', 'Berhasil Login. Terimakasih');
         }
         return redirect()->back()->with('gagal', 'Email / Password Salah');

@@ -1,6 +1,6 @@
 <header class="header ">
     <nav>
-        <div class="logo">KampusMalang.</div>
+        <a href="#" class="logo">KampusMalang.</a>
         <form class="w-1/2">
             <label for="default-search"
                 class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -26,38 +26,35 @@
                     <div class="relative inline-block">
                         <div
                             class="absolute top-0 right-0 w-6 h-6 flex items-center justify-center text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -mt-2 -mr-2 dark:border-gray-900">
-                            2
+                            {{ auth()->user()->unreadNotifications->count() }}
                         </div>
-                        <i class="notif fa-solid fa-bell text-3xl hover:cursor-pointer" data-dropdown-toggle="userDropdown"
+                        <i class="notif fa-solid fa-bell text-3xl hover:cursor-pointer" data-dropdown-toggle="notifDropdown"
                             data-dropdown-placement="bottom-end"></i>
 
-                    </div>
-                    <div id="userDropdown"
-                        class="z-10 shadow-lg  hidden bg-white divide-y divide-gray-100 rounded-lg border w-44 dark:bg-gray-700 dark:divide-gray-600">
-                        <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                            <div>Bonnie Green</div>
-                            <div class="font-medium truncate">name@flowbite.com</div>
-                        </div>
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="avatarButton">
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                            </li>
-                        </ul>
-                        <div class="py-1">
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-                                out</a>
+                        <div id="notifDropdown"
+                            class="z-10 shadow-lg hidden bg-white divide-y divide-gray-100 rounded-lg border w-44 dark:bg-gray-700 dark:divide-gray-600">
+                            <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                                <div class="font-medium truncate">Notifikasi</div>
+                            </div>
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+                                @forelse (auth()->user()->unreadNotifications as $notif)
+                                    <li>
+                                        <a href="{{ route('detail.pendaftaran', ['id' => $notif->data['url'], 'notif' => $notif->id]) }}"
+                                            class="block  text-black dark:hover:bg-gray-600 dark:hover:text-white">
+                                            <span class="  {{ $notif->data['judul'] == "Anda Diterima" ? "text-blue-500" : "text-red-500" }}">{{ $notif->data['judul'] }}</span><br>
+                                            <span class=" font-light " style="font-size: 15px">{{  Str::limit($notif->data['deskripsi'], 10, '...') }}</span>
+                                        </a>
+                                    </li><hr>
+
+
+                                @empty
+                                <p style="font-size: 10px" class="p-5 text-center">Semua Notifikasi Sudah Dibaca</p>
+                                @endforelse
+                                <hr>
+                            </ul>
                         </div>
                     </div>
+
 
 
 

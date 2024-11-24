@@ -27,21 +27,28 @@ class Pendaftar extends Model
     }
     public function scopeFilter($query, $filters): void
     {
-         $query->when(
+        $query->when(
             $filters ?? false,
-            fn ($query, $search) =>
-            $query->where('name' ,'like', '%' . $search . '%' )
-         );
+            fn($query, $search) =>
+                filter_var($search, FILTER_VALIDATE_EMAIL)
+                    ? $query->whereHas('user', function ($query) use ($search) {
+                        $query->where('email', 'like', '%' . $search . '%');
+                    })
+                    : $query->whereHas('user', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%');
+                    })
+        );
     }
+
     public function scopeStatus($query, $filters): void
     {
-        if($filters == 'nol'){
+        if ($filters == 'nol') {
             $filters = "0";
         }
         $query->when(
             $filters !== null,
-           fn ($query) =>
-           $query->where('status', $filters)
+            fn($query) =>
+            $query->where('status', $filters)
         );
     }
 }
