@@ -7,35 +7,25 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# Web Pencarian Perguruan Tinggi 
+# Web Pencarian Perguruan Tinggi (Module LKS)
 
 Proyek ini adalah **aplikasi Pencarian** yang dikembangkan dengan menggunakan **Laravel 11**, **Eloquent ORM**, dan berbagai fitur canggih lainnya. Dengan mengintegrasikan **query scope kompleks**, **middleware**, **policy gates**, dan **chart visualizations** menggunakan **Chart.js**, aplikasi ini memberikan pengalaman pengguna yang efisien dan aman.
 
 ## Fitur Utama
 
-### 1. **CRUD dengan AJAX**
-Aplikasi ini mengimplementasikan **CRUD (Create, Read, Update, Delete)** yang dinamis menggunakan **AJAX** untuk memastikan pembaruan data tanpa perlu me-refresh halaman. Setiap perubahan pada data akan segera terlihat oleh pengguna, membuat aplikasi ini interaktif dan efisien.
+### Untuk Mahasiswa:
+- **Pendaftaran Perguruan Tinggi**: Mahasiswa dapat melakukan pendaftaran ke berbagai perguruan tinggi melalui aplikasi ini, mengisi formulir dengan informasi pribadi dan pilihan fakultas/ jurusan. Status pendaftaran dapat dilihat dan dipantau.
+- **Status Pendaftaran**: Mahasiswa dapat melacak status pendaftaran mereka (diterima/ditolak) melalui halaman profil. Pembaruan status dilakukan oleh admin secara real-time menggunakan **Livewire**.
+- **Pencarian Perguruan Tinggi**: Fitur pencarian untuk memudahkan mahasiswa dalam menemukan perguruan tinggi, fakultas, dan jurusan berdasarkan preferensi mereka.
 
-### 2. **CRUD Gambar**
-Fitur pengelolaan gambar disediakan dengan menggunakan fitur **CRUD** untuk mengunggah, memperbarui, dan menghapus gambar. Gambar yang diunggah akan dikelola secara efisien, memberikan kemudahan bagi pengguna dalam mengelola file media terkait.
 
-### 3. **Pendaftaran ke Perguruan Tinggi**
-Fitur **pendaftaran mahasiswa** memungkinkan pengguna untuk mendaftar ke berbagai perguruan tinggi. Setiap pendaftaran akan melalui proses **verifikasi admin**, yang dapat menerima atau menolak pendaftaran berdasarkan kriteria yang ditentukan.
+### Untuk Admin:
+- **Manajemen Pendaftaran Mahasiswa**: Admin dapat mengelola pendaftaran mahasiswa, menerima atau menolak pendaftaran berdasarkan kriteria yang ditentukan.
+- **CRUD Perguruan Tinggi, Fakultas, dan Jurusan**: Admin dapat menambah, mengedit, dan menghapus data perguruan tinggi, fakultas, dan jurusan dengan mudah melalui antarmuka aplikasi.
+- **Visualisasi Data Pendaftaran**: Admin dapat memantau statistik pendaftaran menggunakan **Chart.js** untuk menampilkan grafik batang dan pie chart mengenai jumlah pendaftar, status pendaftaran, dan distribusi pendaftaran berdasarkan fakultas atau jurusan.
+- **Aktif/Nonaktifkan Pengguna dan Program**: Admin dapat mengaktifkan atau menonaktifkan pengguna, fakultas, jurusan, dan program lainnya melalui antarmuka yang sederhana dan efektif.
+- **Pengelolaan Keamanan dan Akses**: Sistem menggunakan **middleware** dan **policy gates** untuk memastikan bahwa hanya pengguna yang berwenang yang dapat mengakses bagian-bagian tertentu dari aplikasi, menjaga keamanan dan integritas data.
 
-### 4. **Chart Visualisasi Data (Chart.js)**
-Admin memiliki akses untuk melihat statistik pendaftaran melalui **grafik batang** dan **pie chart** menggunakan **Chart.js**. Grafik ini menunjukkan **jumlah total pendaftar**, serta membedakan status pendaftaran antara yang **diterima** atau **ditolak**. Fitur ini memberikan gambaran visual yang jelas tentang proses pendaftaran.
-
-### 5. **Fitur Aktif/Nonaktif Fakultas, Jurusan, dan Pengguna**
-Admin dapat mengelola status **aktif/nonaktif** untuk **fakultas**, **jurusan**, dan **pengguna** melalui antarmuka yang sederhana namun powerful. Fitur ini membantu admin untuk memantau dan mengontrol siapa yang dapat mengakses informasi dan melakukan pendaftaran.
-
-### 6. **Query Scope dan Relasi yang Kompleks**
-Aplikasi ini mengimplementasikan **query scope yang kompleks** untuk mengeksekusi query yang lebih efisien dan terstruktur, serta memanfaatkan **relasi antar model Eloquent** untuk mempermudah pengelolaan data yang memiliki hubungan antar tabel, seperti pengguna, fakultas, dan jurusan.
-
-### 7. **Middleware dan Policy Gates**
-Untuk meningkatkan **keamanan aplikasi**, digunakan **middleware** untuk mengontrol akses ke berbagai bagian aplikasi, memastikan hanya pengguna yang berwenang yang dapat mengakses informasi sensitif. Selain itu, **policy gates** digunakan untuk memberikan kontrol lebih lanjut terkait izin akses pengguna pada setiap entitas, baik itu pengguna biasa atau admin.
-
-### 8. **Routing yang Terstruktur**
-Routing pada aplikasi ini didesain dengan baik, memastikan **keamanan** dan **kecepatan** navigasi antar halaman. **Route Model Binding** dan **Named Routes** digunakan untuk menyederhanakan pengelolaan URL dan memastikan sistem yang terstruktur dengan baik.
 
 ## Teknologi yang Digunakan
 - **Laravel 11**: Framework PHP untuk mengembangkan aplikasi web dengan arsitektur MVC dan Eloquent ORM.
