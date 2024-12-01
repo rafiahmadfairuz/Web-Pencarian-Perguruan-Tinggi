@@ -7,9 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# CRUD Laravel with Feature Test
+# Web Pencarian Perguruan Tinggi 
 
-Proyek ini adalah **aplikasi CRUD Laravel** yang dikembangkan dengan menggunakan **Laravel 11**, **Eloquent ORM**, dan berbagai fitur canggih lainnya. Dengan mengintegrasikan **query scope kompleks**, **middleware**, **policy gates**, dan **chart visualizations** menggunakan **Chart.js**, aplikasi ini memberikan pengalaman pengguna yang efisien dan aman.
+Proyek ini adalah **aplikasi Pencarian** yang dikembangkan dengan menggunakan **Laravel 11**, **Eloquent ORM**, dan berbagai fitur canggih lainnya. Dengan mengintegrasikan **query scope kompleks**, **middleware**, **policy gates**, dan **chart visualizations** menggunakan **Chart.js**, aplikasi ini memberikan pengalaman pengguna yang efisien dan aman.
 
 ## Fitur Utama
 
