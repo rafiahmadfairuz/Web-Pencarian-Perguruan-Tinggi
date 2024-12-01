@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# Web Pencarian Perguruan Tinggi (Module LKS)
+# Web Pencarian Perguruan Tinggi 
 
 Proyek ini adalah **aplikasi Pencarian** yang dikembangkan dengan menggunakan **Laravel 11**, **Eloquent ORM**, dan berbagai fitur canggih lainnya. Dengan mengintegrasikan **query scope kompleks**, **middleware**, **policy gates**, dan **chart visualizations** menggunakan **Chart.js**, aplikasi ini memberikan pengalaman pengguna yang efisien dan aman.
 
@@ -15,7 +15,7 @@ Proyek ini adalah **aplikasi Pencarian** yang dikembangkan dengan menggunakan **
 
 ### Untuk Mahasiswa:
 - **Pendaftaran Perguruan Tinggi**: Mahasiswa dapat melakukan pendaftaran ke berbagai perguruan tinggi melalui aplikasi ini, mengisi formulir dengan informasi pribadi dan pilihan fakultas/ jurusan. Status pendaftaran dapat dilihat dan dipantau.
-- **Status Pendaftaran**: Mahasiswa dapat melacak status pendaftaran mereka (diterima/ditolak) melalui halaman profil. Pembaruan status dilakukan oleh admin secara real-time menggunakan **Livewire**.
+- **Status Pendaftaran**: Mahasiswa dapat melacak status pendaftaran mereka (diterima/ditolak) melalui halaman profil.
 - **Pencarian Perguruan Tinggi**: Fitur pencarian untuk memudahkan mahasiswa dalam menemukan perguruan tinggi, fakultas, dan jurusan berdasarkan preferensi mereka.
 
 
